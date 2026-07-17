@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0A0F;
+  --foreground: #F5F5FA;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  cursor: default;
+}
+
+/* Custom Gold Selection */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #ffffff;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(18, 18, 31, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.glass-premium {
+  background: linear-gradient(135deg, rgba(18, 18, 31, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Hide default cursor only when custom cursor is active */
+.custom-cursor-active {
+  cursor: none;
+}
+.custom-cursor-active a, 
+.custom-cursor-active button, 
+.custom-cursor-active input, 
+.custom-cursor-active select, 
+.custom-cursor-active [role="button"] {
+  cursor: none;
+}
+
+/* Animate glow borders */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(212, 175, 55, 0.1); }
+  50% { border-color: rgba(212, 175, 55, 0.4); }
+}
+
+.animate-border-glow {
+  animation: borderGlow 4s infinite ease-in-out;
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+/* Smooth page transitions custom CSS */
+.page-transition-enter {
+  opacity: 0;
+  transform: scale(0.98);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 800ms ease-out, transform 800ms ease-out;
+}
+.page-transition-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 600ms ease-in, transform 600ms ease-in;
+}
+
