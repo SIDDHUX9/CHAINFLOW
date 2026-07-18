@@ -11,7 +11,9 @@ import {
   Sparkles,
   ArrowRight,
   TrendingUp,
-  FileCheck
+  FileCheck,
+  Award,
+  Terminal
 } from "lucide-react";
 import Link from "@/components/ui/Link";
 
@@ -96,19 +98,19 @@ export default function CreateInvoice() {
   return (
     <div className="flex flex-col gap-10 max-w-3xl mx-auto">
       {/* Wizard Header */}
-      <div className="text-center flex flex-col items-center">
-        <h1 className="text-display text-3xl md:text-5xl font-black">Invoice Tokenizer Wizard</h1>
-        <p className="text-sans text-xs sm:text-sm text-white/50 uppercase tracking-widest mt-1">
-          Soroban Fractionalization Chamber
+      <div className="text-center flex flex-col items-center border-b border-white/5 pb-6">
+        <h1 className="text-display text-3xl md:text-5xl font-black text-white">Invoice Tokenizer</h1>
+        <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
+          Soroban Asset Fractionalization Chamber
         </p>
 
         {/* Dynamic step capsules */}
         <div className="flex justify-center gap-3 mt-8 max-w-md w-full">
-          {["Verify", "Tokenize", "Attestation", "Launch"].map((name, idx) => (
+          {["Ingest", "Verify", "Tokenize", "Compile"].map((name, idx) => (
             <div key={idx} className="flex-1 flex flex-col gap-2 items-center">
               <div className={`h-1.5 w-full rounded-full transition-all duration-500 ${
                 step > idx ? "bg-gold shadow-[0_0_10px_#D4AF37]" :
-                step === idx ? "bg-gold/45" : "bg-white/5"
+                step === idx ? "bg-gold/40" : "bg-white/5"
               }`} />
               <span className={`text-[8px] tracking-wider uppercase font-bold ${
                 step >= idx ? "text-gold" : "text-white/30"
@@ -119,33 +121,33 @@ export default function CreateInvoice() {
       </div>
 
       {/* Main wizard frame */}
-      <div className="glass p-8 md:p-12 rounded-3xl border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+      <div className="glass p-8 md:p-12 rounded-3xl border border-white/5 shadow-2xl bg-[#0E0E17]">
         
         {step === 0 && (
           /* ================= STEP 0: FILE UPLOAD ================= */
-          <div className="flex flex-col gap-6 text-center items-center">
-            <div className="w-16 h-16 rounded-full bg-space-black flex items-center justify-center border border-white/10 animate-float">
+          <div className="flex flex-col gap-6 text-center items-center animate-fadeIn">
+            <div className="w-16 h-16 rounded-2xl bg-[#090910] flex items-center justify-center border border-white/10 mb-2 animate-float">
               <UploadCloud className="w-6 h-6 text-gold" />
             </div>
 
             <div>
-              <h2 className="text-display text-xl font-bold text-white">Upload Receivable PDF</h2>
-              <p className="text-sans text-xs text-white/50 max-w-sm mx-auto mt-1 leading-relaxed">
-                Drag and drop your standard commercial invoice document. Our built-in OCR parser will extract attributes automatically.
+              <h2 className="text-display text-lg font-bold text-white uppercase tracking-wider">Secure Document Ingestion</h2>
+              <p className="text-sans text-xs text-white/50 max-w-md mx-auto mt-1 leading-relaxed">
+                Drag and drop your standard commercial invoice (PDF or image). Our OCR models will parse values, counterparties, and registry logs.
               </p>
             </div>
 
-            <div className="w-full max-w-md border border-white/10 hover:border-gold/20 rounded-2xl p-8 bg-space-black/40 cursor-pointer flex flex-col items-center justify-center gap-2">
-              <UploadCloud className="w-8 h-8 text-white/30" />
-              <span className="text-xs text-white/70">Select Invoice File</span>
-              <span className="text-[9px] text-white/40 uppercase">PDF, XML, or JPG up to 10MB</span>
+            <div className="w-full max-w-md border border-white/10 hover:border-gold/30 rounded-2xl p-10 bg-[#050508] cursor-pointer flex flex-col items-center justify-center gap-3 transition-colors group">
+              <UploadCloud className="w-10 h-10 text-white/20 group-hover:text-gold transition-colors" />
+              <span className="text-xs text-white/60 font-bold group-hover:text-white transition-colors">Select Invoice Document</span>
+              <span className="text-[9px] text-white/30 uppercase font-mono">PDF, XML, or JPG up to 15MB</span>
             </div>
 
-            <span className="text-[9px] text-white/30 uppercase">Or test the flow immediately</span>
+            <span className="text-[9px] text-white/30 uppercase font-bold tracking-widest mt-2">— OR MOCK THE SYSTEM —</span>
 
             <button
               onClick={handleManualInvoiceEntry}
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-gold-dark to-gold text-space-black text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-[0_0_15px_rgba(212,175,55,0.25)]"
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-gold-dark to-gold text-space-black text-xs font-black uppercase tracking-widest shadow-lg hover:scale-105 transition-transform inline-flex items-center gap-2"
             >
               Load Simulated Invoice <ArrowRight className="w-4 h-4" />
             </button>
@@ -154,10 +156,10 @@ export default function CreateInvoice() {
 
         {step === 1 && (
           /* ================= STEP 1: VERIFY ATTRIBUTE DETAILS ================= */
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 animate-fadeIn">
             <div>
-              <h2 className="text-display text-lg font-bold text-white">Verify Extracted Invoice Details</h2>
-              <p className="text-sans text-xs text-white/50">Ensure all metadata values align with your commercial document.</p>
+              <h2 className="text-display text-lg font-bold text-white uppercase tracking-wider">Verify Extracted Metadata</h2>
+              <p className="text-sans text-xs text-white/40">Ensure attributes match your physical commercial invoice structure.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
@@ -167,7 +169,7 @@ export default function CreateInvoice() {
                   type="text" 
                   value={title} 
                   onChange={(e) => setTitle(e.target.value)}
-                  className="bg-space-black border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30"
+                  className="bg-[#090910] border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30 transition-colors"
                 />
               </div>
 
@@ -177,7 +179,7 @@ export default function CreateInvoice() {
                   type="text" 
                   value={counterparty} 
                   onChange={(e) => setCounterparty(e.target.value)}
-                  className="bg-space-black border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30"
+                  className="bg-[#090910] border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30 transition-colors"
                 />
               </div>
 
@@ -187,17 +189,17 @@ export default function CreateInvoice() {
                   type="number" 
                   value={amount} 
                   onChange={(e) => setAmount(Number(e.target.value))}
-                  className="bg-space-black border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30"
+                  className="bg-[#090910] border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30 transition-colors"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] text-white/40 uppercase font-bold">Expected Yield Rate (%)</label>
+                <label className="text-[10px] text-white/40 uppercase font-bold">Estimated Yield APY (%)</label>
                 <input 
                   type="number" 
                   value={yieldRate} 
                   onChange={(e) => setYieldRate(parseFloat(e.target.value))}
-                  className="bg-space-black border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30"
+                  className="bg-[#090910] border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30 transition-colors"
                 />
               </div>
             </div>
@@ -205,12 +207,12 @@ export default function CreateInvoice() {
             <button
               onClick={handleTriggerVerification}
               disabled={loading}
-              className="w-full mt-6 py-4 rounded-full bg-gold text-space-black text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2"
+              className="w-full mt-6 py-4 rounded-full bg-gold hover:bg-gold-light text-space-black text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 shadow-md transition-all"
             >
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Attesting via Oracle Network...</span>
+                  <span>Submitting to Consensus Oracles...</span>
                 </>
               ) : (
                 <span>Trigger On-Chain Verification</span>
@@ -221,15 +223,15 @@ export default function CreateInvoice() {
 
         {step === 2 && (
           /* ================= STEP 2: FRACTIONALIZATION SETTINGS ================= */
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 animate-fadeIn">
             <div>
-              <h2 className="text-display text-lg font-bold text-white">Configure Fractional Ownership</h2>
-              <p className="text-sans text-xs text-white/50">Determine how many fractional slots you wish to split this invoice asset into.</p>
+              <h2 className="text-display text-lg font-bold text-white uppercase tracking-wider">Fractional Ledger Splits</h2>
+              <p className="text-sans text-xs text-white/40">Determine how many fractional slots you wish to split this invoice asset into.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] text-white/40 uppercase font-bold">Fraction Count</label>
+                <label className="text-[10px] text-white/40 uppercase font-bold">Fraction Slot Count</label>
                 <input 
                   type="number" 
                   value={fractionCount} 
@@ -237,86 +239,86 @@ export default function CreateInvoice() {
                     setFractionCount(Number(e.target.value));
                     setFractionPrice(amount / Number(e.target.value));
                   }}
-                  className="bg-space-black border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30"
+                  className="bg-[#090910] border border-white/10 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-gold/30 transition-colors"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] text-white/40 uppercase font-bold">Price per Fraction ($)</label>
+                <label className="text-[10px] text-white/40 uppercase font-bold">Calculated Slot Price ($)</label>
                 <input 
                   type="number" 
                   disabled
                   value={fractionPrice.toFixed(2)}
-                  className="bg-space-black/50 border border-white/5 rounded-xl px-4 py-3 text-xs text-white/50 outline-none"
+                  className="bg-[#090910]/40 border border-white/5 rounded-xl px-4 py-3 text-xs text-white/40 outline-none font-mono"
                 />
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-space-black/40 border border-gold/10 flex items-start gap-3">
-              <Sparkles className="w-4 h-4 text-gold mt-0.5" />
+            <div className="p-5 rounded-2xl bg-[#090910] border border-gold/15 flex items-start gap-3.5 mt-2">
+              <Sparkles className="w-5 h-5 text-gold mt-0.5 shrink-0" />
               <div className="text-xs">
-                <span className="font-bold text-white">Stellar Fractionalization Feature</span>
-                <p className="text-white/50 mt-1 leading-relaxed">
-                  Split ownership allows micro-investors globally to purchase a segment of your invoice. Smart contracts will handle payments and yields distribution seamlessly.
+                <span className="font-bold text-white">Stellar Ledger Splitting</span>
+                <p className="text-white/40 mt-1 leading-relaxed">
+                  Minting fractional slots permits institutional or retail backers globally to purchase portions of your invoice. Soroban contracts handle payments and distributions automatically.
                 </p>
               </div>
             </div>
 
             <button
               onClick={() => setStep(3)}
-              className="w-full mt-4 py-4 rounded-full bg-gold text-space-black text-xs font-bold uppercase tracking-wider"
+              className="w-full mt-4 py-4 rounded-full bg-gold hover:bg-gold-light text-space-black text-xs font-black uppercase tracking-widest transition-colors shadow-md"
             >
-              Review Attestation Details
+              Review Attestation Terms
             </button>
           </div>
         )}
 
         {step === 3 && (
           /* ================= STEP 3: REVIEW AND LAUNCH ================= */
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 animate-fadeIn">
             <div>
-              <h2 className="text-display text-lg font-bold text-white">Review Smart Contract Terms</h2>
-              <p className="text-sans text-xs text-white/50">By launching, you compile the Soroban WASM contract representing this asset.</p>
+              <h2 className="text-display text-lg font-bold text-white uppercase tracking-wider">Compile Asset Parameters</h2>
+              <p className="text-sans text-xs text-white/40">By launching, you compile and publish the Soroban WASM contract representing this invoice.</p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-space-black/50 border border-white/5 flex flex-col gap-3 text-xs">
-              <div className="flex justify-between">
+            <div className="p-5 rounded-2xl bg-[#090910] border border-white/5 flex flex-col gap-3 text-xs font-mono">
+              <div className="flex justify-between border-b border-white/5 pb-2">
                 <span className="text-white/40">Exchanged Asset:</span>
-                <span className="font-bold text-white">{title}</span>
+                <span className="font-sans font-bold text-white">{title}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-white/40">Total Collateral Value:</span>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/40">Collateral Value:</span>
                 <span className="font-bold text-gold">${amount.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-white/40">Sectors & Country:</span>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/40">Industry & Country:</span>
                 <span className="text-white">{industry} ({countryCode})</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-white/40">Maturity Date:</span>
+              <div className="flex justify-between border-b border-white/5 pb-2">
+                <span className="text-white/40">Maturity Ledger Date:</span>
                 <span className="text-white">{dueDate}</span>
               </div>
-              <div className="flex justify-between border-t border-white/5 pt-2.5">
-                <span className="text-white/40">Fractions to Mint:</span>
+              <div className="flex justify-between pt-1">
+                <span className="text-white/40">Mint Details:</span>
                 <span className="text-white font-bold">{fractionCount} Slots @ ${fractionPrice} each</span>
               </div>
             </div>
 
             {!walletConnected ? (
-              <div className="flex flex-col gap-3 text-center">
+              <div className="flex flex-col gap-3 text-center mt-2">
                 <button
                   onClick={connectWallet}
-                  className="w-full py-4 rounded-full bg-gradient-to-r from-gold-dark to-gold text-space-black text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+                  className="w-full py-4 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-black uppercase tracking-widest shadow-lg transition-transform hover:scale-105"
                 >
                   Connect Freighter Wallet
                 </button>
-                <span className="text-[10px] text-white/40">Please connect Freighter extension to deploy on-chain assets.</span>
+                <span className="text-[10px] text-white/40 font-semibold tracking-wider">Freighter extension is required to sign ledger compilations.</span>
               </div>
             ) : (
               <button
                 onClick={handleLaunchFactoring}
                 disabled={loading}
-                className="w-full py-4 rounded-full bg-gradient-to-r from-gold-dark to-gold text-space-black text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(212,175,55,0.25)] flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-black uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 hover:brightness-105 transition-all"
               >
                 {loading ? (
                   <>
@@ -333,30 +335,30 @@ export default function CreateInvoice() {
 
         {step === 4 && (
           /* ================= STEP 4: SUCCESS CHAMPION ================= */
-          <div className="flex flex-col gap-6 text-center items-center py-6">
-            <div className="w-16 h-16 rounded-full bg-accent-green/10 flex items-center justify-center border border-accent-green/30 animate-pulse">
+          <div className="flex flex-col gap-6 text-center items-center py-6 animate-fadeIn">
+            <div className="w-16 h-16 rounded-2xl bg-accent-green/10 flex items-center justify-center border border-accent-green/30 animate-pulse mb-2">
               <FileCheck className="w-8 h-8 text-accent-green" />
             </div>
 
             <div className="flex flex-col gap-1">
-              <h2 className="text-display text-2xl font-black text-white">Invoice Tokenized Successfully</h2>
-              <p className="text-sans text-xs text-white/50 max-w-sm mx-auto leading-relaxed mt-1">
-                The smart contract terms have been written on Stellar. Exporters and backers can now trade or fractionalize this receivable globally.
+              <h2 className="text-display text-2xl font-black text-white uppercase tracking-wider">Asset Tokenized</h2>
+              <p className="text-sans text-xs text-white/50 max-w-md mx-auto leading-relaxed mt-1">
+                The factoring contract parameters have been published to the Stellar ledger. Exporters and backers can now trade fractional slots.
               </p>
             </div>
 
-            <div className="w-full max-w-md p-4 rounded-xl bg-space-black/50 border border-white/5 flex flex-col gap-2.5 text-xs text-left">
+            <div className="w-full max-w-md p-4.5 rounded-xl bg-[#090910] border border-white/5 flex flex-col gap-2 text-xs text-left font-mono">
               <div className="flex justify-between">
-                <span className="text-white/40">Asset Contract ID:</span>
-                <span className="font-mono text-gold text-[10px]">CBAR...7S8E</span>
+                <span className="text-white/40">Compiled WASM Hash:</span>
+                <span className="text-gold text-[10px]">CBAR...7S8E</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-white/40">Stellar Ledger Height:</span>
-                <span className="font-mono text-white text-[10px]">#3,248,510</span>
+              <div className="flex justify-between border-t border-white/5 pt-2 mt-1">
+                <span className="text-white/40">Ledger Height:</span>
+                <span className="text-white text-[10px]">#3,248,510</span>
               </div>
             </div>
 
-            <div className="flex gap-4 w-full max-w-md mt-4">
+            <div className="flex gap-4 w-full max-w-md mt-6">
               <button
                 onClick={() => setStep(0)}
                 className="flex-1 py-3.5 rounded-full border border-white/10 hover:border-gold/30 hover:bg-gold/5 text-white text-xs font-bold uppercase tracking-wider transition-all"
@@ -365,7 +367,7 @@ export default function CreateInvoice() {
               </button>
               <button
                 onClick={() => setPage("/marketplace")}
-                className="flex-1 py-3.5 rounded-full bg-gold text-space-black text-xs font-bold uppercase tracking-wider transition-all"
+                className="flex-1 py-3.5 rounded-full bg-gold hover:bg-gold-light text-space-black text-xs font-black uppercase tracking-wider transition-all"
               >
                 Go to Exchange
               </button>

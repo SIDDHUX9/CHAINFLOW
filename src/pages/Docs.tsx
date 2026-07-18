@@ -25,7 +25,7 @@ export default function Docs() {
   const menuItems = [
     { id: "endpoints", label: "REST API Endpoints" },
     { id: "smart-contracts", label: "Soroban Smart Contracts" },
-    { id: "freighter", label: "Freighter Wallet Integration" },
+    { id: "freighter", label: "Freighter Integration" },
   ];
 
   const codeBlocks = {
@@ -79,13 +79,13 @@ const signFreighterTx = async (envelopeXdr) => {
   const selectedCode = codeBlocks[activeTab as keyof typeof codeBlocks];
 
   return (
-    <div className="flex flex-col gap-10 max-w-5xl mx-auto">
+    <div className="flex flex-col gap-10 max-w-5xl mx-auto animate-fadeIn">
       
       {/* Header */}
-      <div>
-        <h1 className="text-display text-3xl md:text-5xl font-black">Developer Portal</h1>
-        <p className="text-sans text-xs sm:text-sm text-white/50 uppercase tracking-widest mt-1">
-          ChainFlow Soroban & SDK Documentation
+      <div className="border-b border-white/5 pb-6">
+        <h1 className="text-display text-3xl md:text-5xl font-black text-white">Developer Portal</h1>
+        <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
+          ChainFlow Soroban Smart Contract & SDK Documentation
         </p>
       </div>
 
@@ -93,17 +93,17 @@ const signFreighterTx = async (envelopeXdr) => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         
         {/* Column 1: Sidebar Navigation */}
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-3">
           {menuItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className={`w-full text-left px-5 py-3.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-between transition-all ${
+              className={`w-full text-left px-5 py-4 rounded-xl border text-xs font-black uppercase tracking-wider flex items-center justify-between transition-all ${
                 activeTab === item.id 
-                  ? "bg-gold/10 border-gold/30 text-gold" 
-                  : "bg-transparent border-white/5 text-white/60 hover:border-white/15 hover:text-white"
+                  ? "bg-gold/10 border-gold/30 text-gold shadow-md" 
+                  : "bg-transparent border-white/5 text-white/50 hover:border-white/15 hover:text-white"
               }`}
             >
               <span>{item.label}</span>
@@ -114,32 +114,32 @@ const signFreighterTx = async (envelopeXdr) => {
 
         {/* Column 2 & 3 & 4: Documentation Viewer */}
         <div className="md:col-span-3 flex flex-col gap-6">
-          <div className="glass p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col gap-4">
+          <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-5 bg-[#0E0E17]">
             
-            <div className="flex items-center gap-2 text-gold">
+            <div className="flex items-center gap-2 text-gold border-b border-white/5 pb-4">
               <BookOpen className="w-5 h-5" />
-              <h3 className="text-display text-base font-bold text-white uppercase tracking-wider">
+              <h3 className="text-display text-sm font-bold text-white uppercase tracking-wider">
                 {activeTab === "endpoints" ? "Factoring API Reference" :
                  activeTab === "smart-contracts" ? "Soroban Smart Contracts WASM API" :
                  "Freighter Wallet Connection Setup"}
               </h3>
             </div>
 
-            <p className="text-sans text-xs text-white/70 leading-relaxed">
+            <p className="text-sans text-xs text-white/60 leading-relaxed">
               {activeTab === "endpoints" ? "Integrate your corporate ERP or invoicing systems directly into the factoring network. Trigger attestation requests, upload invoice structures, and fetch fractional yields in real-time." :
                activeTab === "smart-contracts" ? "Invoice factoring assets are compiled into optimized WASM bytecodes deployed on the Soroban smart contract framework, ensuring decentralized multi-party allocations and automatic settlements." :
                "Interact with the Freighter browser wallet in client-side applications. Query addresses, verify connection status, and request cryptographic transaction signatures securely."}
             </p>
 
-            {/* Code blocks with copy actions */}
-            <div className="flex flex-col rounded-2xl border border-white/10 overflow-hidden mt-2 bg-space-black">
-              <div className="bg-space-black border-b border-white/10 px-4 py-2.5 flex justify-between items-center text-xs">
-                <span className="font-mono text-[10px] text-white/40 flex items-center gap-1.5">
-                  <Terminal className="w-3.5 h-3.5" /> {selectedCode.title}
+            {/* Code blocks with copy actions (Terminal Theme) */}
+            <div className="flex flex-col rounded-2xl border border-white/10 overflow-hidden mt-3 bg-[#050508]">
+              <div className="bg-[#090910] border-b border-white/10 px-5 py-3 flex justify-between items-center text-xs">
+                <span className="font-mono text-[10px] text-white/40 flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-gold" /> {selectedCode.title}
                 </span>
                 <button
                   onClick={() => handleCopy(selectedCode.code, activeTab)}
-                  className="text-white/40 hover:text-white transition-colors flex items-center gap-1 font-sans text-[10px]"
+                  className="text-white/40 hover:text-white transition-colors flex items-center gap-1.5 font-sans text-[10px] font-bold uppercase tracking-wider"
                 >
                   {copiedCode === activeTab ? (
                     <>
@@ -153,7 +153,7 @@ const signFreighterTx = async (envelopeXdr) => {
                 </button>
               </div>
 
-              <pre className="p-5 font-mono text-[11px] text-white/80 overflow-x-auto leading-relaxed bg-[#05050A]">
+              <pre className="p-6 font-mono text-[11px] text-white/80 overflow-x-auto leading-relaxed bg-[#050509]">
                 <code>{selectedCode.code}</code>
               </pre>
             </div>

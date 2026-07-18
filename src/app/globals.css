@@ -40,25 +40,28 @@ body {
   background: #D4AF37;
 }
 
-/* Glassmorphism utility */
+/* Premium Solid Panels (No glassmorphism) */
 .glass {
-  background: rgba(18, 18, 31, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: #11111A;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.06);
 }
 
 .glass-premium {
-  background: linear-gradient(135deg, rgba(18, 18, 31, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: linear-gradient(135deg, #131322 0%, #0B0B11 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px 0 rgba(212, 175, 55, 0.04);
 }
 
 /* Hide default cursor only when custom cursor is active */
 .custom-cursor-active {
-  cursor: none;
+  cursor: default;
 }
 .custom-cursor-active a, 
 .custom-cursor-active button, 
