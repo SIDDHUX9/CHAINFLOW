@@ -14,6 +14,7 @@ import CreateInvoice from "./pages/CreateInvoice";
 import InvestorProfile from "./pages/InvestorProfile";
 import Analytics from "./pages/Analytics";
 import Docs from "./pages/Docs";
+import Whitepaper from "./pages/Whitepaper";
 import InvoiceDetail from "./pages/InvoiceDetail";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
     if (activePage === "/create") return <CreateInvoice />;
     if (activePage === "/analytics") return <Analytics />;
     if (activePage === "/docs") return <Docs />;
+    if (activePage === "/whitepaper") return <Whitepaper />;
     
     // Dynamic Dynamic parameters matching
     if (activePage.startsWith("/invoice/")) return <InvoiceDetail />;

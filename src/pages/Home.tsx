@@ -708,6 +708,7 @@ export default function Home() {
         </div>
         <p>© 2026 ChainFlow Protocol. Powered by Soroban & Stellar.</p>
         <div className="flex gap-6">
+          <Link href="/whitepaper" className="hover:text-gold transition-colors">Whitepaper</Link>
           <Link href="/docs" className="hover:text-gold transition-colors">Developer API</Link>
           <Link href="/marketplace" className="hover:text-gold transition-colors">Invoice Exchange</Link>
           <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>

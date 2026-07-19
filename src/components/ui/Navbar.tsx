@@ -24,6 +24,7 @@ export default function Navbar() {
     { name: "Marketplace", path: "/marketplace" },
     { name: "Tokenize", path: "/create" },
     { name: "Analytics", path: "/analytics" },
+    { name: "Whitepaper", path: "/whitepaper" },
     { name: "Docs", path: "/docs" },
   ];
 
