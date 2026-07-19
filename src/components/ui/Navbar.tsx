@@ -29,13 +29,14 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-6xl"
-      >
-        <div className="glass-premium rounded-full px-6 py-3 flex items-center justify-between">
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-6xl pointer-events-none">
+        <motion.header
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="w-full pointer-events-auto"
+        >
+          <div className="glass-premium rounded-full px-6 py-3 flex items-center justify-between">
           {/* Logo */}
           <Link 
             href="/" 
@@ -83,34 +84,60 @@ export default function Navbar() {
           {/* Wallet Action Button & Mobile Hamburguer */}
           <div className="flex items-center gap-3">
             {walletConnected ? (
-              <div className="hidden md:flex items-center gap-3">
-                {/* Connected Wallet Capsule */}
-                <div className="px-4 py-1.5 rounded-full border border-gold/30 bg-gold/5 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
-                  <span className="text-[10px] font-mono tracking-widest text-gold-light uppercase">
-                    {walletAddress?.slice(0, 6)}...{walletAddress?.slice(-4)}
-                  </span>
+              <>
+                {/* Desktop view */}
+                <div className="hidden md:flex items-center gap-3">
+                  {/* Connected Wallet Capsule */}
+                  <div className="px-4 py-1.5 rounded-full border border-gold/30 bg-gold/5 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+                    <span className="text-[10px] font-mono tracking-widest text-gold-light uppercase">
+                      {walletAddress?.slice(0, 6)}...{walletAddress?.slice(-4)}
+                    </span>
+                  </div>
+                  <button
+                    onClick={disconnectWallet}
+                    onMouseEnter={() => setCursorHovered(true)}
+                    onMouseLeave={() => setCursorHovered(false)}
+                    className="px-3 py-1.5 rounded-full border border-white/10 hover:border-accent-red/40 hover:text-accent-red bg-space-black/50 text-[10px] tracking-wider uppercase font-semibold transition-all duration-300"
+                  >
+                    Disconnect
+                  </button>
                 </div>
+                {/* Mobile view */}
+                <div className="flex md:hidden items-center gap-2">
+                  <div className="px-2.5 py-1 py-1.5 rounded-full border border-gold/30 bg-gold/5 flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+                    <span className="text-[9px] font-mono tracking-widest text-gold-light uppercase">
+                      {walletAddress?.slice(0, 4)}...{walletAddress?.slice(-2)}
+                    </span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Desktop Connect Wallet */}
                 <button
-                  onClick={disconnectWallet}
+                  onClick={connectWallet}
+                  disabled={walletConnecting}
                   onMouseEnter={() => setCursorHovered(true)}
                   onMouseLeave={() => setCursorHovered(false)}
-                  className="px-3 py-1.5 rounded-full border border-white/10 hover:border-accent-red/40 hover:text-accent-red bg-space-black/50 text-[10px] tracking-wider uppercase font-semibold transition-all duration-300"
+                  className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300"
                 >
-                  Disconnect
+                  <Wallet className="w-3.5 h-3.5" />
+                  {walletConnecting ? "Connecting..." : "Connect Wallet"}
                 </button>
-              </div>
-            ) : (
-              <button
-                onClick={connectWallet}
-                disabled={walletConnecting}
-                onMouseEnter={() => setCursorHovered(true)}
-                onMouseLeave={() => setCursorHovered(false)}
-                className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300"
-              >
-                <Wallet className="w-3.5 h-3.5" />
-                {walletConnecting ? "Connecting..." : "Connect Wallet"}
-              </button>
+                {/* Mobile Connect Wallet */}
+                <button
+                  onClick={connectWallet}
+                  disabled={walletConnecting}
+                  onMouseEnter={() => setCursorHovered(true)}
+                  onMouseLeave={() => setCursorHovered(false)}
+                  className="flex md:hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-[10px] font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all duration-300"
+                >
+                  <Wallet className="w-3 h-3" />
+                  {walletConnecting ? "..." : "Connect"}
+                </button>
+              </>
             )}
 
             {/* Mobile Menu Toggle */}
@@ -125,6 +152,7 @@ export default function Navbar() {
           </div>
         </div>
       </motion.header>
+    </div>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
