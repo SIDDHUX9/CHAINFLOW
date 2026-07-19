@@ -223,13 +223,13 @@ export default function Whitepaper() {
             </p>
             <div className="bg-black/30 p-4 rounded-xl border border-white/5 text-center font-mono text-sm text-gold">
               A_P = Amount \times 0.90 <br/>
-              R_M = (Amount \times 0.10) - (Fee_{Protocol} + Yield_{Investor})
+              R_M = (Amount \times 0.10) - (Fee_{"{Protocol}"} + Yield_{"{Investor}"})
             </div>
             <p>
               Where the investor yield is computed linearly based on terms:
             </p>
             <div className="bg-black/30 p-4 rounded-xl border border-white/5 text-center font-mono text-xs text-white/70">
-              Yield_{Investor} = A_P \times APY_{Rate} \times \left( \frac{Term}{365} \right)
+              Yield_{"{Investor}"} = A_P \times APY_{"{Rate}"} \times \left( \frac{"{Term}"}{365} \right)
             </div>
             <p>
               The 10% escrow reserve ensures there is a cushion in case of minor shipping disputes or delay penalties, shielding backers from loss.
