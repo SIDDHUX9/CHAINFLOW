@@ -40,23 +40,50 @@ body {
   background: #D4AF37;
 }
 
-/* Premium Solid Panels (No glassmorphism) */
+/* Premium Solid Panels with Liquid Glass Refraction */
 .glass {
   background: #11111A;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.06); /* Refraction shadow */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass:hover {
-  border-color: rgba(212, 175, 55, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.06);
+  border-color: rgba(212, 175, 55, 0.2);
+  box-shadow: 
+    0 12px 35px -8px rgba(0, 0, 0, 0.7), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.08), 
+    0 0 20px rgba(212, 175, 55, 0.02);
 }
 
 .glass-premium {
-  background: linear-gradient(135deg, #131322 0%, #0B0B11 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px 0 rgba(212, 175, 55, 0.04);
+  background: linear-gradient(135deg, #121221 0%, #0A0A0F 100%);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.8), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.08), 
+    0 0 30px 0 rgba(212, 175, 55, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-premium:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    0 25px 45px -12px rgba(0, 0, 0, 0.85), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 
+    0 0 35px 0 rgba(212, 175, 55, 0.05);
+}
+
+/* Tactile Click Physics */
+.active-tactile {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+}
+
+.active-tactile:active {
+  transform: scale(0.97) translateY(1px);
+  filter: brightness(0.9);
 }
 
 /* Hide default cursor only when custom cursor is active */
@@ -110,4 +137,10 @@ body {
   transform: scale(0.98);
   transition: opacity 600ms ease-in, transform 600ms ease-in;
 }
+
+/* Geometric Clipped Corners (10px diagonal cut on top-right and bottom-left) */
+.clip-corners {
+  clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 10px, 100% 100%, 10px 100%, 0% calc(100% - 10px));
+}
+
 

@@ -99,7 +99,7 @@ export default function Navbar() {
                     onClick={disconnectWallet}
                     onMouseEnter={() => setCursorHovered(true)}
                     onMouseLeave={() => setCursorHovered(false)}
-                    className="px-3 py-1.5 rounded-full border border-white/10 hover:border-accent-red/40 hover:text-accent-red bg-space-black/50 text-[10px] tracking-wider uppercase font-semibold transition-all duration-300"
+                    className="px-3 py-1.5 rounded-full border border-white/10 hover:border-accent-red/40 hover:text-accent-red bg-space-black/50 text-[10px] tracking-wider uppercase font-semibold transition-all duration-300 active-tactile"
                   >
                     Disconnect
                   </button>
@@ -122,7 +122,7 @@ export default function Navbar() {
                   disabled={walletConnecting}
                   onMouseEnter={() => setCursorHovered(true)}
                   onMouseLeave={() => setCursorHovered(false)}
-                  className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300"
+                  className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 active-tactile"
                 >
                   <Wallet className="w-3.5 h-3.5" />
                   {walletConnecting ? "Connecting..." : "Connect Wallet"}
@@ -133,7 +133,7 @@ export default function Navbar() {
                   disabled={walletConnecting}
                   onMouseEnter={() => setCursorHovered(true)}
                   onMouseLeave={() => setCursorHovered(false)}
-                  className="flex md:hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-[10px] font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all duration-300"
+                  className="flex md:hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-[10px] font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all duration-300 active-tactile"
                 >
                   <Wallet className="w-3 h-3" />
                   {walletConnecting ? "..." : "Connect"}

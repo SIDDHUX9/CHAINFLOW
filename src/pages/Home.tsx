@@ -109,33 +109,33 @@ export default function Home() {
       <div className="hero-glow absolute -top-24 left-1/2 -translate-x-1/2 w-[70%] h-[350px] bg-gradient-to-b from-gold/5 via-space-purple/5 to-transparent blur-[80px] rounded-full pointer-events-none" />
 
       {/* 1. HERO SECTION */}
-      <section className="relative flex flex-col items-center justify-center text-center pt-16 pb-8 min-h-[75vh]">
-        <div className="flex flex-col gap-6 max-w-5xl relative z-10 px-4">
-          
-          <div className="hero-badge inline-flex items-center gap-2 self-center px-4 py-1.5 rounded-full border border-gold/20 bg-[#10101C]/90 shadow-[0_0_20px_rgba(212,175,55,0.06)]">
+      <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-16 pb-8 min-h-[75vh]">
+        {/* Left Column: Asymmetric Left-Aligned content */}
+        <div className="lg:col-span-7 flex flex-col gap-6 text-left relative z-10 px-4">
+          <div className="hero-badge inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-gold/20 bg-[#10101C]/90 shadow-[0_0_20px_rgba(212,175,55,0.06)]">
             <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
             <span className="text-[10px] tracking-[0.25em] font-black uppercase text-gold">
               Soroban Smart Contract Liquidity
             </span>
           </div>
 
-          <h1 className="hero-title text-display text-white text-4xl sm:text-6xl md:text-8xl font-black leading-[1.05] tracking-tight">
+          <h1 className="hero-title text-display text-white text-4xl sm:text-6xl md:text-7xl font-black leading-[1.05] tracking-tight">
             Redefining Liquidity <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark filter drop-shadow-[0_2px_15px_rgba(212,175,55,0.2)]">
               Through Global Flow
             </span>
           </h1>
 
-          <p className="hero-desc text-sans text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mt-2">
+          <p className="hero-desc text-sans text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed mt-2">
             ChainFlow tokenizes invoice receivables on the Stellar blockchain. Instantly bridge international commerce invoices to institutional yields with sub-cent transactions.
           </p>
 
-          <div className="hero-actions flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <div className="hero-actions flex flex-row items-center gap-4 mt-8">
             <Link
               href="/create"
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className="w-full sm:w-auto px-10 py-4.5 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-[#0A0A0F] text-xs font-black uppercase tracking-widest shadow-[0_4px_25px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_35px_rgba(212,175,55,0.45)] hover:scale-[1.03] transition-all duration-300"
+              className="px-8 py-4 rounded-sm clip-corners bg-gradient-to-r from-gold-dark via-gold to-gold-light text-[#0A0A0F] text-xs font-black uppercase tracking-widest shadow-[0_4px_25px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_35px_rgba(212,175,55,0.45)] hover:scale-[1.03] transition-all duration-300 active-tactile"
             >
               Mint Invoice
             </Link>
@@ -143,71 +143,156 @@ export default function Home() {
               href="/marketplace"
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className="w-full sm:w-auto px-10 py-4.5 rounded-full bg-[#0F0F1B] hover:bg-[#151526] border border-white/10 hover:border-gold/30 text-white text-xs font-black uppercase tracking-widest hover:scale-[1.03] transition-all duration-300"
+              className="px-8 py-4 rounded-sm clip-corners bg-[#0F0F1B] hover:bg-[#151526] border border-white/10 hover:border-gold/30 text-white text-xs font-black uppercase tracking-widest hover:scale-[1.03] transition-all duration-300 active-tactile"
             >
               Liquidity Exchange
             </Link>
           </div>
         </div>
+
+        {/* Right Column: Interactive Ledger Dashboard Console (Bento style) */}
+        <div className="lg:col-span-5 relative z-10 px-4 flex justify-center">
+          <div className="w-full max-w-sm glass-premium p-8 rounded-3xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),_inset_0_1px_0_rgba(255,255,255,0.06)]">
+            {/* Loop video background (Logistics / Cargo Transport) */}
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.14] pointer-events-none z-0 mix-blend-overlay"
+            />
+            {/* Top glass highlights */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full z-10" />
+            
+            <div className="relative z-10 flex justify-between items-center border-b border-white/5 pb-4 mb-6">
+              <span className="text-[9px] font-mono tracking-widest text-white/40 uppercase">LEDGER_STATE_REPLAY</span>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+                <span className="text-[9px] font-mono text-accent-green font-bold uppercase">LIVE SYNC</span>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex flex-col gap-6 font-mono">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] text-white/30 uppercase">RECEIVABLE_ASSET_ID</span>
+                <span className="text-white font-bold text-sm tracking-wide">CF- Mombasa Flower Export</span>
+              </div>
+
+              <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] text-white/30 uppercase">FACE_VALUE</span>
+                  <span className="text-gold font-bold text-2xl tracking-tight">$18,400.00</span>
+                </div>
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-[10px] text-white/30 uppercase">DISCOUNT_APY</span>
+                  <span className="text-accent-green font-bold text-base">11.2%</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 text-xs pt-2">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] text-white/30 uppercase">MATURITY</span>
+                  <span className="text-slate-300 font-semibold">Oct 15, 2026</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] text-white/30 uppercase">TENOR</span>
+                  <span className="text-slate-300 font-semibold">87 Days</span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-[10px] text-white/55 flex flex-col gap-1.5">
+                <div className="flex justify-between">
+                  <span>Buyer Status:</span>
+                  <span className="text-accent-green font-bold uppercase">ATTESTED</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Ledger Finality:</span>
+                  <span className="text-white/80">Sequence #48102</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Token Supply:</span>
+                  <span className="text-white/80">100 Fractions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* 2. STATS SECTION (Premium Solid Cards) */}
+      {/* 2. STATS SECTION (Bento Grid 2.0) */}
       <section className="relative w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <div className="hero-stats-card p-8 rounded-2xl bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-gold/20 transition-all duration-300">
+          {/* Card 1: Invoices Factored (col-span-2) */}
+          <div className="hero-stats-card p-8 rounded-[2rem] bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-gold/20 transition-all duration-300 md:col-span-2">
             <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="flex justify-between items-start mb-4">
-              <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Invoices Factored</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Invoices Factored</span>
+                <span className="text-xs text-white/40">Total commercial receivables tokenized on-chain</span>
+              </div>
               <Activity className="w-4 h-4 text-gold/60" />
             </div>
-            <span className="text-display text-3xl font-extrabold text-white">
+            <span className="text-display text-4xl sm:text-5xl font-black text-white">
               ${liveStats.factored.toLocaleString()}
             </span>
-            <div className="mt-2 text-[10px] text-white/40 flex items-center gap-1">
-              <span className="text-accent-green font-bold">▲ Live</span> ticking in real-time
+            <div className="mt-4 text-[10px] text-white/40 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+              <span className="text-accent-green font-bold">▲ Live</span> updating in real-time
             </div>
           </div>
 
-          <div className="hero-stats-card p-8 rounded-2xl bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-accent-purple/20 transition-all duration-300">
+          {/* Card 2: Capital Deployed (col-span-1) */}
+          <div className="hero-stats-card p-8 rounded-[2rem] bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-accent-purple/20 transition-all duration-300 md:col-span-1">
             <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="flex justify-between items-start mb-4">
-              <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Capital Deployed</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Capital Deployed</span>
+              </div>
               <TrendingUp className="w-4 h-4 text-accent-purple/60" />
             </div>
             <span className="text-display text-3xl font-extrabold text-white">
               ${liveStats.deployed.toLocaleString()}
             </span>
-            <div className="mt-2 text-[10px] text-white/40">
-              Secured in liquidity pools
+            <div className="mt-8 text-[10px] text-white/40">
+              Secured in smart liquidity pools
             </div>
           </div>
 
-          <div className="hero-stats-card p-8 rounded-2xl bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-accent-green/20 transition-all duration-300">
+          {/* Card 3: Settlement Speed (col-span-1) */}
+          <div className="hero-stats-card p-8 rounded-[2rem] bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-accent-green/20 transition-all duration-300 md:col-span-1">
             <div className="absolute inset-0 bg-gradient-to-br from-accent-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="flex justify-between items-start mb-4">
-              <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Settlement Speed</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Settlement Speed</span>
+              </div>
               <Zap className="w-4 h-4 text-accent-green/60" />
             </div>
             <span className="text-display text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-accent-green to-teal-400">
               {liveStats.speed}s
             </span>
-            <div className="mt-2 text-[10px] text-white/40">
+            <div className="mt-8 text-[10px] text-white/40">
               Stellar ledger finality time
             </div>
           </div>
 
-          <div className="hero-stats-card p-8 rounded-2xl bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-gold/20 transition-all duration-300">
+          {/* Card 4: Validator Nodes (col-span-2) */}
+          <div className="hero-stats-card p-8 rounded-[2rem] bg-[#0E0E18] border border-white/5 shadow-2xl relative overflow-hidden group hover:border-gold/20 transition-all duration-300 md:col-span-2">
             <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="flex justify-between items-start mb-4">
-              <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Validator Nodes</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] tracking-[0.2em] font-semibold text-gold uppercase">Validator Nodes</span>
+                <span className="text-xs text-white/40">Independent consensus instances attesting assets</span>
+              </div>
               <ShieldCheck className="w-4 h-4 text-gold/60" />
             </div>
-            <span className="text-display text-3xl font-extrabold text-white">
+            <span className="text-display text-4xl sm:text-5xl font-black text-white">
               {liveStats.nodes} Active
             </span>
-            <div className="mt-2 text-[10px] text-white/40">
-              Attesting invoice authenticity
+            <div className="mt-4 text-[10px] text-white/40 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+              <span>Decentralized validation network</span>
             </div>
           </div>
 
@@ -232,7 +317,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-6 p-8 rounded-2xl bg-[#0E0E18] border border-white/5">
+            <div className="flex flex-col gap-6 p-8 rounded-3xl glass">
               
               {/* Slider 1: Amount */}
               <div className="flex flex-col gap-2">
@@ -302,7 +387,7 @@ export default function Home() {
 
           {/* Right panel: dynamic receipt */}
           <div className="lg:col-span-5">
-            <div className="p-8 rounded-3xl border border-gold/25 bg-gradient-to-b from-[#131322] to-[#0A0A0F] shadow-[0_20px_50px_rgba(0,0,0,0.8),_0_0_30px_rgba(212,175,55,0.03)] relative overflow-hidden">
+            <div className="p-8 rounded-3xl glass-premium relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 blur-2xl rounded-full" />
               
               <h3 className="text-display text-lg font-bold text-white mb-6 border-b border-white/5 pb-4 flex items-center justify-between">
@@ -347,7 +432,7 @@ export default function Home() {
               <div className="mt-8">
                 <Link
                   href="/create"
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-gold via-gold-light to-gold-dark text-[#0A0A0F] text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform duration-300"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-gold via-gold-light to-gold-dark text-[#0A0A0F] text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-transform duration-300 active-tactile shadow-[0_4px_15px_rgba(212,175,55,0.15)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.3)]"
                 >
                   Apply for Factoring <ArrowUpRight className="w-4 h-4" />
                 </Link>
@@ -413,10 +498,19 @@ export default function Home() {
           {/* Tab Screen Simulator (Interactive Visual Console) */}
           <div className="lg:col-span-7">
             <div className="rounded-3xl border border-white/5 bg-[#08080F] p-8 min-h-[360px] flex flex-col justify-between shadow-2xl relative overflow-hidden font-mono">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(123,97,255,0.05),transparent_60%)]" />
+              {/* Loop video background (Stellar AI abstract network nodes) */}
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4"
+                className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none z-0"
+              />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(123,97,255,0.05),transparent_60%)] z-10" />
               
               {/* Console Header */}
-              <div className="flex justify-between items-center border-b border-white/5 pb-4 mb-6 text-xs text-white/40">
+              <div className="relative z-20 flex justify-between items-center border-b border-white/5 pb-4 mb-6 text-xs text-white/40">
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-accent-red/60" />
@@ -429,7 +523,7 @@ export default function Home() {
               </div>
 
               {/* Console Content based on Step */}
-              <div className="flex-1 flex flex-col justify-center">
+              <div className="relative z-20 flex-1 flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                   {activeStep === 0 && (
                     <motion.div
