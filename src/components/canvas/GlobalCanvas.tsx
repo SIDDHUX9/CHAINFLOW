@@ -97,12 +97,12 @@ function SceneController() {
 
 export default function GlobalCanvas() {
   return (
-    <div className="fixed inset-0 w-full h-full -z-10 bg-space-black pointer-events-none">
+    <div className="fixed inset-0 w-full h-full -z-10 bg-transparent pointer-events-none">
       <Canvas
         dpr={[1, 2]} // Cap DPR at 2 for performance optimization
         gl={{ 
           antialias: false, // Disabled for post-processing pipeline
-          alpha: false,
+          alpha: true,
           powerPreference: "high-performance" 
         }}
       >

@@ -53,32 +53,32 @@ const fragmentShader = `
     float normElevation = (vElevation + 4.0) / 8.0;
     normElevation = clamp(normElevation, 0.0, 1.0);
 
-    // Design-system-aligned colors:
-    // Soothing deep blue-violet: #080812
-    vec3 spaceDark = vec3(0.031, 0.031, 0.071);
-    // Deep Indigo brand color: #2A1B6A
-    vec3 deepIndigo = vec3(0.165, 0.106, 0.416);
-    // Brand Gold: #D4AF37
+    // Sumi-E Zen Colors:
+    // Soothing deep charcoal ink wash: #0A0A0D
+    vec3 spaceDark = vec3(0.04, 0.04, 0.05);
+    // Misty slate ink: #14141A
+    vec3 deepIndigo = vec3(0.08, 0.08, 0.10);
+    // Warm Gold Leaf: #D4AF37
     vec3 brandGold = vec3(0.831, 0.686, 0.216);
     
-    // Blend deep background with indigo based on height
-    vec3 baseColor = mix(spaceDark, deepIndigo, normElevation * 0.7);
+    // Blend deep background with misty slate based on height
+    vec3 baseColor = mix(spaceDark, deepIndigo, normElevation * 0.6);
     // Add shimmering gold accents on the wave crests
-    vec3 finalColor = mix(baseColor, brandGold, pow(normElevation, 2.2) * 0.8);
+    vec3 finalColor = mix(baseColor, brandGold, pow(normElevation, 2.2) * 0.7);
 
     // Shimmering highlights on peak crests
     float crestIntensity = smoothstep(0.65, 1.0, normElevation);
     vec3 highlightColor = vec3(0.953, 0.898, 0.671); // Soft yellow/light gold
-    finalColor += crestIntensity * highlightColor * 0.35;
+    finalColor += crestIntensity * highlightColor * 0.25;
 
-    // Technical grid pattern overlay to reinforce ledger blockchain aesthetic
-    float gridX = sin(vUv.x * 70.0) * 0.5 + 0.5;
-    float gridY = sin(vUv.y * 70.0) * 0.5 + 0.5;
-    float grid = step(0.985, gridX) + step(0.985, gridY);
+    // Soft organic veins in place of technical grid
+    float gridX = sin(vUv.x * 50.0) * 0.5 + 0.5;
+    float gridY = sin(vUv.y * 50.0) * 0.5 + 0.5;
+    float grid = step(0.99, gridX) + step(0.99, gridY);
     grid = clamp(grid, 0.0, 1.0);
     
-    // Mix in the grid lines softly
-    finalColor = mix(finalColor, highlightColor, grid * 0.08);
+    // Very subtle organic golden veins
+    finalColor = mix(finalColor, highlightColor, grid * 0.015);
 
     gl_FragColor = vec4(finalColor, 0.95);
   }

@@ -104,63 +104,66 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col gap-32 relative select-none w-full">
+    <div className="flex flex-col gap-16 relative select-none w-full">
+      {/* Background cinematic Sumi-E landscape image */}
+      <img 
+        src="/images/sumie.png"
+        className="fixed inset-0 w-full h-full object-cover opacity-[0.09] pointer-events-none -z-20"
+        alt="Sumi-e Zen background"
+      />
       {/* Glow highlight */}
       <div className="hero-glow absolute -top-24 left-1/2 -translate-x-1/2 w-[70%] h-[350px] bg-gradient-to-b from-gold/5 via-space-purple/5 to-transparent blur-[80px] rounded-full pointer-events-none" />
 
       {/* 1. HERO SECTION */}
-      <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-16 pb-8 min-h-[75vh]">
+      <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-16 pb-0 mt-16">
         {/* Left Column: Asymmetric Left-Aligned content */}
         <div className="lg:col-span-7 flex flex-col gap-6 text-left relative z-10 px-4">
           <div className="hero-badge inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-gold/20 bg-[#10101C]/90 shadow-[0_0_20px_rgba(212,175,55,0.06)]">
             <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
-            <span className="text-[10px] tracking-[0.25em] font-black uppercase text-gold">
+            <span className="text-[10px] tracking-[0.25em] font-light uppercase text-gold font-body">
               Soroban Smart Contract Liquidity
             </span>
           </div>
 
           <h1 className="hero-title font-heading italic text-white/95 text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.85] mb-2">
-            Redefining Liquidity <br />
+            Beyond Silence, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark filter drop-shadow-[0_2px_15px_rgba(212,175,55,0.15)]">
-              Through Global Flow
+              Pure Trade Flow.
             </span>
           </h1>
 
-          <p className="hero-desc font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
-            ChainFlow tokenizes invoice receivables on the Stellar blockchain. Instantly bridge international commerce invoices to institutional yields with sub-cent transactions.
+          <p className="hero-desc font-body font-light text-white/50 text-sm sm:text-base max-w-xl leading-relaxed mt-1">
+            Simplifying international invoice factoring. By removing traditional friction, we create digital havens for deep capital security and pure liquid flows on Stellar.
           </p>
 
-          <div className="hero-actions flex flex-row items-center gap-4 mt-8">
+          <div className="hero-actions flex flex-row items-center gap-4 mt-8 font-body">
             <Link
               href="/create"
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className="px-8 py-4 rounded-sm clip-corners bg-gradient-to-r from-gold-dark via-gold to-gold-light text-[#0A0A0F] text-xs font-black uppercase tracking-widest shadow-[0_4px_25px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_35px_rgba(212,175,55,0.45)] hover:scale-[1.03] transition-all duration-300 active-tactile"
+              className="px-8 py-4 rounded-sm clip-corners bg-gradient-to-r from-gold-dark via-gold to-gold-light text-[#0A0A0F] text-xs font-semibold uppercase tracking-widest shadow-[0_4px_25px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_35px_rgba(212,175,55,0.45)] hover:scale-[1.03] transition-all duration-300 active-tactile"
             >
-              Mint Invoice
+              Begin Journey
             </Link>
             <Link
               href="/marketplace"
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className="px-8 py-4 rounded-sm clip-corners bg-[#0F0F1B] hover:bg-[#151526] border border-white/10 hover:border-gold/30 text-white text-xs font-black uppercase tracking-widest hover:scale-[1.03] transition-all duration-300 active-tactile"
+              className="px-8 py-4 rounded-sm clip-corners bg-[#0F0F1B] hover:bg-[#151526] border border-white/10 hover:border-gold/30 text-white text-xs font-semibold uppercase tracking-widest hover:scale-[1.03] transition-all duration-300 active-tactile"
             >
-              Liquidity Exchange
+              Audit Exchange
             </Link>
           </div>
         </div>
 
         {/* Right Column: Interactive Ledger Dashboard Console (Bento style) */}
-        <div className="lg:col-span-5 relative z-10 px-4 flex justify-center">
+        <div className="lg:col-span-5 relative z-10 px-4 flex justify-center lg:pt-14">
           <div className="w-full max-w-sm glass-premium p-8 rounded-3xl relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),_inset_0_1px_0_rgba(255,255,255,0.06)]">
-            {/* Loop video background (Logistics / Cargo Transport) */}
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4"
-              className="absolute inset-0 w-full h-full object-cover opacity-[0.14] pointer-events-none z-0 mix-blend-overlay"
+            {/* Zen Gold Ink background */}
+            <img 
+              src="/images/gold_ink.png"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.16] pointer-events-none z-0 mix-blend-screen"
+              alt="Zen gold ink wash"
             />
             {/* Top glass highlights */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full z-10" />

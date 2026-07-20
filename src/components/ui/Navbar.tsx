@@ -50,7 +50,7 @@ export default function Navbar() {
                 CF
               </div>
             </div>
-            <span className="text-display text-lg font-bold tracking-wider text-white group-hover:text-gold transition-colors">
+            <span className="font-heading italic text-xl font-normal text-white group-hover:text-gold transition-colors tracking-tight">
               ChainFlow
             </span>
           </Link>

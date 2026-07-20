@@ -84,7 +84,7 @@ export default function Marketplace() {
       {/* Header and View Toggle */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/5 pb-6">
         <div>
-          <h1 className="text-display text-3xl md:text-5xl font-black text-white">Invoice Exchange</h1>
+          <h1 className="font-heading italic text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1">Invoice Exchange</h1>
           <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
             Soroban Certified Yield-Bearing Assets
           </p>
