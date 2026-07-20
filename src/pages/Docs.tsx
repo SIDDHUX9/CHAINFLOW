@@ -79,18 +79,19 @@ const signFreighterTx = async (envelopeXdr) => {
   const selectedCode = codeBlocks[activeTab as keyof typeof codeBlocks];
 
   return (
-    <div className="flex flex-col gap-10 max-w-5xl mx-auto animate-fadeIn">
-      
-      {/* Header */}
-      <div className="border-b border-white/5 pb-6">
-        <h1 className="text-display text-3xl md:text-5xl font-black text-white">Developer Portal</h1>
-        <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
-          ChainFlow Soroban Smart Contract & SDK Documentation
-        </p>
-      </div>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start w-full animate-fadeIn">
+      {/* Left panel: Documentation Suite (col-span-8) */}
+      <div className="lg:col-span-8 flex flex-col gap-8">
+        {/* Header */}
+        <div className="border-b border-white/5 pb-6 text-left flex flex-col items-start">
+          <h1 className="text-display text-3xl md:text-5xl font-black text-white">Developer Portal</h1>
+          <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
+            ChainFlow Soroban Smart Contract & SDK Documentation
+          </p>
+        </div>
 
-      {/* Main layout */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Main nested layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* Column 1: Sidebar Navigation */}
         <div className="flex flex-col gap-3">
@@ -113,8 +114,19 @@ const signFreighterTx = async (envelopeXdr) => {
         </div>
 
         {/* Column 2 & 3 & 4: Documentation Viewer */}
-        <div className="md:col-span-3 flex flex-col gap-6">
-          <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-5 bg-[#0E0E17]">
+        <div className="md:col-span-2 flex flex-col gap-6">
+          <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-5 relative overflow-hidden">
+            {/* Background video loop from motionsites (data stream flow) */}
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260329_050842_be71947f-f16e-4a14-810c-06e83d23ddb5.mp4"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.05] pointer-events-none z-0"
+            />
+            
+            <div className="relative z-10 w-full h-full flex flex-col gap-5">
             
             <div className="flex items-center gap-2 text-gold border-b border-white/5 pb-4">
               <BookOpen className="w-5 h-5" />
@@ -157,12 +169,14 @@ const signFreighterTx = async (envelopeXdr) => {
                 <code>{selectedCode.code}</code>
               </pre>
             </div>
-
+            </div>
           </div>
         </div>
-
       </div>
+    </div>
 
+      {/* Right panel: Transparent space for the 3D rotating crystal */}
+      <div className="lg:col-span-4 h-[300px] lg:h-[600px] flex items-center justify-center pointer-events-none" />
     </div>
   );
 }

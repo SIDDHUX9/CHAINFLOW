@@ -32,8 +32,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "sans-serif"],
+        sans: ["Barlow", "sans-serif"],
+        display: ["Barlow", "sans-serif"],
+        heading: ["'Instrument Serif'", "serif"],
+        body: ["Barlow", "sans-serif"],
       },
     },
   },

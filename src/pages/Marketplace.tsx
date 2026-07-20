@@ -270,7 +270,17 @@ export default function Marketplace() {
       {/* INVESTMENT DETAILED WIZARD MODAL */}
       {selectedInvoice && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-space-black/90 backdrop-blur-sm animate-fadeIn">
-          <div className="glass w-full max-w-xl rounded-3xl border border-gold/25 overflow-hidden relative shadow-2xl animate-popup bg-[#0E0E17]">
+          <div className="glass w-full max-w-xl rounded-3xl border border-gold/25 overflow-hidden relative shadow-2xl animate-popup">
+            {/* Background video loop from motionsites (web3 abstract flow) */}
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.06] pointer-events-none z-0"
+            />
+            <div className="relative z-10 w-full h-full flex flex-col">
             {/* Header */}
             <div className="p-6 border-b border-white/5 flex justify-between items-center bg-[#090910]">
               <div>
@@ -389,6 +399,7 @@ export default function Marketplace() {
                   </button>
                 </>
               )}
+            </div>
             </div>
           </div>
         </div>

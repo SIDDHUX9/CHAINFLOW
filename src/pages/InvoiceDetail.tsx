@@ -35,8 +35,19 @@ export default function InvoiceDetail() {
       </button>
 
       {/* Invoice Overview Card */}
-      <div className="glass p-8 md:p-12 rounded-3xl border border-gold/25 relative overflow-hidden flex flex-col md:flex-row justify-between gap-8 bg-[#0E0E17]">
-        <div className="flex flex-col gap-5">
+      <div className="glass p-8 md:p-12 rounded-3xl border border-gold/25 relative overflow-hidden flex flex-col md:flex-row justify-between gap-8">
+        {/* Background video loop from motionsites (cargo logistics flow) */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none z-0 mix-blend-overlay"
+        />
+        
+        <div className="relative z-10 w-full flex flex-col md:flex-row justify-between gap-8">
+          <div className="flex flex-col gap-5">
           <div>
             <span className="text-[9px] uppercase text-gold tracking-widest font-black bg-gold/10 px-3 py-1 rounded-full border border-gold/20 inline-block">
               {invoice.industry} Sector
@@ -72,13 +83,14 @@ export default function InvoiceDetail() {
             <span className="text-display text-3xl font-black text-accent-green">{invoice.yieldRate}% APY</span>
           </div>
         </div>
+        </div>
       </div>
 
       {/* Audit Telemetry & Constellation Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Column 1: On-Chain Audit Log */}
-        <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6 bg-[#0E0E17]">
+        <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6">
           <div className="flex items-center gap-2 text-gold border-b border-white/5 pb-4">
             <Activity className="w-5 h-5" />
             <h3 className="text-display text-sm font-bold text-white uppercase tracking-wider">
@@ -94,7 +106,7 @@ export default function InvoiceDetail() {
             ].map((node, idx) => (
               <div key={idx} className="relative flex flex-col gap-1">
                 {/* Timeline node marker */}
-                <div className="absolute -left-[33px] top-0.5 w-4 h-4 rounded-full bg-[#0E0E17] border border-gold/30 flex items-center justify-center">
+                <div className="absolute -left-[33px] top-0.5 w-4 h-4 rounded-full bg-[#08080f] border border-gold/30 flex items-center justify-center">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                 </div>
                 
@@ -107,7 +119,7 @@ export default function InvoiceDetail() {
         </div>
 
         {/* Column 2: Fraction Allocation Details */}
-        <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6 bg-[#0E0E17]">
+        <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6">
           <div className="flex items-center gap-2 text-accent-purple border-b border-white/5 pb-4">
             <Award className="w-5 h-5" />
             <h3 className="text-display text-sm font-bold text-white uppercase tracking-wider">

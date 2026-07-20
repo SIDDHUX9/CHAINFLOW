@@ -96,9 +96,11 @@ export default function CreateInvoice() {
   };
 
   return (
-    <div className="flex flex-col gap-10 max-w-3xl mx-auto">
-      {/* Wizard Header */}
-      <div className="text-center flex flex-col items-center border-b border-white/5 pb-6">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start w-full">
+      {/* Left panel: Form Wizard (col-span-7) */}
+      <div className="lg:col-span-7 flex flex-col gap-8">
+        {/* Wizard Header */}
+        <div className="text-left flex flex-col items-start border-b border-white/5 pb-6">
         <h1 className="text-display text-3xl md:text-5xl font-black text-white">Invoice Tokenizer</h1>
         <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
           Soroban Asset Fractionalization Chamber
@@ -121,7 +123,19 @@ export default function CreateInvoice() {
       </div>
 
       {/* Main wizard frame */}
-      <div className="glass p-8 md:p-12 rounded-3xl border border-white/5 shadow-2xl bg-[#0E0E17]">
+      <div className="glass p-8 md:p-12 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
+        {/* Background video loop from motionsites (payments flow) */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_192508_4eecde4c-f835-4f4b-b255-eafd1156da99.mp4"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.06] pointer-events-none z-0"
+        />
+        
+        {/* Ensure all contents render above background video with z-10 */}
+        <div className="relative z-10 w-full h-full">
         
         {step === 0 && (
           /* ================= STEP 0: FILE UPLOAD ================= */
@@ -375,6 +389,13 @@ export default function CreateInvoice() {
           </div>
         )}
 
+        </div>
+      </div>
+    </div>
+
+      {/* Right panel: Transparent space highlighting the 3D orbital tunnel */}
+      <div className="lg:col-span-5 h-[300px] lg:h-[600px] flex items-center justify-center pointer-events-none relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl" />
       </div>
     </div>
   );

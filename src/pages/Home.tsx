@@ -119,14 +119,14 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 className="hero-title text-display text-white text-4xl sm:text-6xl md:text-7xl font-black leading-[1.05] tracking-tight">
+          <h1 className="hero-title font-heading italic text-white/95 text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.85] mb-2">
             Redefining Liquidity <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark filter drop-shadow-[0_2px_15px_rgba(212,175,55,0.2)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark filter drop-shadow-[0_2px_15px_rgba(212,175,55,0.15)]">
               Through Global Flow
             </span>
           </h1>
 
-          <p className="hero-desc text-sans text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed mt-2">
+          <p className="hero-desc font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
             ChainFlow tokenizes invoice receivables on the Stellar blockchain. Instantly bridge international commerce invoices to institutional yields with sub-cent transactions.
           </p>
 
@@ -309,10 +309,10 @@ export default function Home() {
               <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase flex items-center gap-1.5">
                 <Calculator className="w-3.5 h-3.5" /> Finance Estimation Model
               </span>
-              <h2 className="text-display text-3xl sm:text-5xl font-black text-white">
+              <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
                 Factoring Calculator
               </h2>
-              <p className="text-sans text-sm text-slate-400">
+              <p className="font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
                 Simulate your fractional invoice cash flows. Exporters get instant liquidity advances while investors secure competitive yields.
               </p>
             </div>
@@ -448,10 +448,10 @@ export default function Home() {
       <section className="flex flex-col gap-14 w-full">
         <div className="text-center max-w-2xl mx-auto flex flex-col gap-2">
           <span className="text-[10px] tracking-[0.3em] font-black text-gold uppercase">Soroban Smart Oracles</span>
-          <h2 className="text-display text-3xl sm:text-5xl font-black text-white">
+          <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
             Programmable Consensus Flow
           </h2>
-          <p className="text-sans text-sm text-white/50">
+          <p className="font-body font-light text-white/60 text-sm max-w-xl mx-auto leading-relaxed mt-1">
             Click through our tokenization process to see how ChainFlow verifies physical invoice documents and unlocks Stellar blockchain liquidity.
           </p>
         </div>
@@ -628,10 +628,10 @@ export default function Home() {
             <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase flex items-center gap-1">
               <TrendingUp className="w-3.5 h-3.5" /> High Yield Receivables
             </span>
-            <h2 className="text-display text-3xl sm:text-5xl font-black text-white">
+            <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
               Active Factoring Pools
             </h2>
-            <p className="text-sans text-sm text-slate-400 max-w-xl">
+            <p className="font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
               Buy fractional shares of institutional invoices secured by Soroban smart contracts. Earn high APY backer yield settlements.
             </p>
           </div>
@@ -650,7 +650,7 @@ export default function Home() {
             return (
               <div
                 key={inv.id}
-                className="p-8 rounded-2xl bg-[#0E0E18] border border-white/5 flex flex-col justify-between min-h-[380px] hover:border-gold/30 hover:-translate-y-1.5 transition-all duration-300 relative group"
+                className="p-8 rounded-3xl glass flex flex-col justify-between min-h-[380px] hover:-translate-y-1.5 transition-all duration-300 relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />
                 
@@ -718,72 +718,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. TRUST NETWORK */}
-      <section className="py-12 border-t border-b border-white/5 bg-[#090910]/40 w-full">
-        <div className="flex flex-col gap-8 items-center text-center">
-          <span className="text-[10px] tracking-[0.35em] font-bold text-white/30 uppercase">
-            POWERED BY DECENTRALIZED STELLAR NETWORKS
+      {/* 6. SOROBAN ATTESTATION ORACLE CONSENSUS LOGS */}
+      <section className="flex flex-col gap-10 w-full relative">
+        <div className="text-center max-w-2xl mx-auto flex flex-col gap-2">
+          <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5" /> Decentralized Integrity Verification
           </span>
-          <div className="flex flex-wrap justify-center gap-10 md:gap-20 items-center">
-            {[
-              { name: "STELLAR FOUNDATION", logo: "★" },
-              { name: "SOROBAN ECOSYSTEM", logo: "◆" },
-              { name: "ANCHOR NETWORK", logo: "▲" },
-              { name: "DTCC COMPLIANT", logo: "■" },
-              { name: "ORACLE TRUST", logo: "●" }
-            ].map((partner) => (
-              <div key={partner.name} className="flex items-center gap-2 opacity-40 hover:opacity-85 transition-opacity cursor-pointer">
-                <span className="text-gold font-bold text-xs">{partner.logo}</span>
-                <span className="text-display text-xs font-black tracking-widest text-white">
-                  {partner.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. CLIENT TESTIMONIALS */}
-      <section className="flex flex-col gap-14 w-full">
-        <div className="text-center max-w-xl mx-auto flex flex-col gap-2">
-          <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase">Exporter & Investor Feedback</span>
-          <h2 className="text-display text-3xl sm:text-4xl font-black text-white">
-            Client Attestations
+          <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
+            Attestation Telemetry
           </h2>
-          <p className="text-sans text-sm text-white/40">
-            Read what financial executives, exporters, and liquidity backers say about fractional on-chain invoicing.
+          <p className="font-body font-light text-white/60 text-sm max-w-xl mx-auto leading-relaxed mt-1">
+            Audit live invoice verification sequences from independent Stellar validator and anchor node streams in real-time.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          <div className="p-10 rounded-3xl border border-white/5 bg-[#0E0E18] flex flex-col justify-between min-h-[220px] relative group hover:border-gold/20 transition-all duration-300">
-            <div className="absolute top-6 right-8 text-5xl text-gold/15 font-serif pointer-events-none select-none">“</div>
-            <p className="text-sans text-sm text-slate-300 leading-relaxed italic relative z-10">
-              With ChainFlow, we fractionalized a $12,500 shipping invoice for black tea leaves and received funding in stablecoins in minutes. This completely bypasses the traditional bank review periods.
-            </p>
-            <div className="border-t border-white/5 pt-4 mt-6">
-              <h4 className="text-display text-xs font-bold text-white uppercase tracking-wider">
-                Maria Rodriguez
-              </h4>
-              <p className="text-sans text-[10px] text-gold uppercase tracking-wider mt-0.5">
-                Founder, Mombasa Agriculture Export
-              </p>
+          {/* Left Block: Live Log Stream (col-span-8) */}
+          <div className="lg:col-span-8 glass p-8 rounded-3xl border border-white/5 relative overflow-hidden font-mono flex flex-col justify-between min-h-[350px]">
+            {/* Background flow particles (visual decor) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(212,175,55,0.03),transparent_50%)]" />
+            
+            <div className="relative z-10 flex justify-between items-center border-b border-white/5 pb-4 mb-6">
+              <span className="text-[9px] tracking-widest text-white/30 uppercase">ATTESTATION_CONGRESS_LEDGER</span>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+                <span className="text-[9px] text-accent-green font-bold uppercase">Consensus Stabilized</span>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex-1 flex flex-col gap-3.5 text-xs text-white/70">
+              <div className="flex items-start gap-4">
+                <span className="text-gold shrink-0 font-bold">[15:39:10]</span>
+                <span className="text-white/40">&gt;</span>
+                <p>Ingesting Invoice ID <span className="text-white font-bold">CF-892-COL</span> (Bogota Coffee Coop). Face value: $14,500.00. Authenticating metadata hash...</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-gold shrink-0 font-bold">[15:39:12]</span>
+                <span className="text-white/40">&gt;</span>
+                <p>[Stellar VM] Attestation request sent. Oracles querying Colombian customs registries... <span className="text-accent-green font-bold">VERIFIED</span>.</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-gold shrink-0 font-bold">[15:39:18]</span>
+                <span className="text-white/40">&gt;</span>
+                <p>Consensus reached: 3/3 signatures collected. Soroban contract minted <span className="text-gold font-bold">145 fractions</span> (CF-COF-091) active.</p>
+              </div>
+              <div className="flex items-start gap-4 border-t border-white/5 pt-4 mt-2">
+                <span className="text-accent-purple shrink-0 font-bold">[15:42:01]</span>
+                <span className="text-white/40">&gt;</span>
+                <p>Deploying Invoice ID <span className="text-white font-bold">CF-902-KEN</span> (Mombasa Flower Export). Deployed to node cluster sequence #48102.</p>
+              </div>
+            </div>
+
+            <div className="relative z-10 mt-6 pt-4 border-t border-white/5 text-[9px] text-white/30 flex justify-between">
+              <span>LEDGER_IDX: #884,912</span>
+              <span>ORACLE ATTESTATION TIMEOUT: 120ms</span>
             </div>
           </div>
 
-          <div className="p-10 rounded-3xl border border-white/5 bg-[#0E0E18] flex flex-col justify-between min-h-[220px] relative group hover:border-accent-purple/20 transition-all duration-300">
-            <div className="absolute top-6 right-8 text-5xl text-gold/15 font-serif pointer-events-none select-none">“</div>
-            <p className="text-sans text-sm text-slate-300 leading-relaxed italic relative z-10">
-              Providing liquidity to micro-invoices was impossible on other chains due to transaction cost spikes. On Stellar, gas is sub-cent, enabling us to distribute diversified yield backing pools safely.
-            </p>
-            <div className="border-t border-white/5 pt-4 mt-6">
-              <h4 className="text-display text-xs font-bold text-white uppercase tracking-wider">
-                Hans Schmidt
-              </h4>
-              <p className="text-sans text-[10px] text-gold uppercase tracking-wider mt-0.5">
-                Partner, Schmidt Capital Berlin
-              </p>
+          {/* Right Block: Node Status Overview (col-span-4) */}
+          <div className="lg:col-span-4 glass p-8 rounded-3xl border border-white/5 relative overflow-hidden flex flex-col justify-between min-h-[350px]">
+            <div className="relative z-10">
+              <span className="text-[9px] font-mono tracking-widest text-white/30 uppercase">VALIDATOR_POOL</span>
+              <h3 className="text-display text-sm font-bold text-white uppercase tracking-wider mt-1.5 mb-6">Anchor Nodes</h3>
+              
+              <div className="flex flex-col gap-4 font-mono text-[11px]">
+                {[
+                  { name: "Node Alpha (Berlin)", ip: "188.42.102.*", active: true },
+                  { name: "Node Beta (Singapore)", ip: "46.109.112.*", active: true },
+                  { name: "Node Gamma (Bogota)", ip: "201.89.24.*", active: true },
+                  { name: "Node Delta (Mombasa)", ip: "197.80.91.*", active: false }
+                ].map((node, idx) => (
+                  <div key={idx} className="flex justify-between items-center p-3 rounded-xl bg-black/30 border border-white/5">
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-white font-semibold">{node.name}</span>
+                      <span className="text-[9px] text-white/30">{node.ip}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className={`w-1.5 h-1.5 rounded-full ${node.active ? "bg-accent-green animate-pulse" : "bg-white/10"}`} />
+                      <span className={`text-[9px] font-bold ${node.active ? "text-accent-green" : "text-white/20"}`}>
+                        {node.active ? "SYNCED" : "OFFLINE"}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative z-10 pt-4 border-t border-white/5 text-[9px] text-white/30 text-center font-mono">
+              Network Decentralization: <span className="text-accent-green font-bold">75%</span>
             </div>
           </div>
 

@@ -33,14 +33,24 @@ export default function InvestorProfile() {
     <div className="flex flex-col gap-10 max-w-4xl mx-auto animate-fadeIn">
       
       {/* 1. Header card */}
-      <div className="glass p-8 md:p-12 rounded-3xl border border-gold/25 relative overflow-hidden flex flex-col md:flex-row gap-8 items-center bg-[#0E0E17]">
+      <div className="glass p-8 md:p-12 rounded-3xl border border-gold/25 relative overflow-hidden flex flex-col md:flex-row gap-8 items-center">
+        {/* Background video loop from motionsites (investors flow) */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260207_050933_33e2620d-09cd-43a2-80ef-4cdbb42f4194.mp4"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none z-0 mix-blend-overlay"
+        />
+        
         {/* Holographic Avatar ring */}
-        <div className="w-28 h-28 rounded-full border-2 border-gold/30 flex items-center justify-center bg-[#090910] relative group shadow-md shrink-0">
+        <div className="w-28 h-28 rounded-full border-2 border-gold/30 flex items-center justify-center bg-[#090910] relative group shadow-md shrink-0 z-10">
           <div className="absolute inset-1.5 rounded-full border border-dashed border-gold/20 animate-spin" style={{ animationDuration: "15s" }} />
           <Users className="w-10 h-10 text-gold" />
         </div>
 
-        <div className="flex flex-col gap-4 text-center md:text-left">
+        <div className="flex flex-col gap-4 text-center md:text-left relative z-10">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold/20 bg-gold/10 text-[9px] uppercase tracking-widest font-black text-gold">
               <Award className="w-3.5 h-3.5" /> Accredited Backing Partner
@@ -59,21 +69,21 @@ export default function InvestorProfile() {
 
       {/* 2. Metrics grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="glass p-6 rounded-2xl border border-white/5 text-center bg-[#0E0E17]">
+        <div className="glass p-6 rounded-2xl border border-white/5 text-center">
           <span className="text-[10px] uppercase text-white/40 tracking-wider font-bold">Total Supported Capital</span>
           <h3 className="text-display text-2xl font-black text-white mt-1.5 font-mono">
             ${profile.totalInvested.toLocaleString()}
           </h3>
         </div>
 
-        <div className="glass p-6 rounded-2xl border border-white/5 text-center bg-[#0E0E17]">
+        <div className="glass p-6 rounded-2xl border border-white/5 text-center">
           <span className="text-[10px] uppercase text-white/40 tracking-wider font-bold">Active Assets</span>
           <h3 className="text-display text-2xl font-black text-white mt-1.5 font-mono">
             {profile.activePositions} positions
           </h3>
         </div>
 
-        <div className="glass p-6 rounded-2xl border border-white/5 text-center bg-[#0E0E17]">
+        <div className="glass p-6 rounded-2xl border border-white/5 text-center">
           <span className="text-[10px] uppercase text-white/40 tracking-wider font-bold">Consensus Reputation</span>
           <h3 className="text-display text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent-green to-teal-400 mt-1.5 font-mono">
             {profile.score}% Perfect
@@ -82,7 +92,7 @@ export default function InvestorProfile() {
       </div>
 
       {/* 3. Review feeds */}
-      <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6 bg-[#0E0E17]">
+      <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6">
         <div className="flex items-center gap-2 text-gold border-b border-white/5 pb-4">
           <MessageSquare className="w-5 h-5" />
           <h3 className="text-display text-sm font-bold text-white uppercase tracking-wider">Backer Reputation Feed</h3>
