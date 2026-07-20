@@ -1,4 +1,4 @@
-import { isConnected, getAddress, signTransaction } from "@stellar/freighter-api";
+import { isConnected, getAddress, signTransaction, requestAccess } from "@stellar/freighter-api";
 import { 
   TransactionBuilder, 
   Networks, 
@@ -21,7 +21,7 @@ export async function checkFreighterConnected(): Promise<boolean> {
   if (typeof window === "undefined") return false;
   try {
     const result = await isConnected();
-    return !!result.isConnected;
+    return typeof result === "boolean" ? result : !!result?.isConnected;
   } catch (error) {
     console.error("Error checking Freighter connection:", error);
     return false;
@@ -35,10 +35,11 @@ export async function getFreighterPublicKey(): Promise<string | null> {
   if (typeof window === "undefined") return null;
   try {
     const status = await isConnected();
-    if (!status.isConnected) {
+    const connected = typeof status === "boolean" ? status : !!status?.isConnected;
+    if (!connected) {
       throw new Error("Freighter wallet is not connected or installed.");
     }
-    const result = await getAddress();
+    const result = await requestAccess();
     if (result.error) {
       throw new Error(result.error);
     }
