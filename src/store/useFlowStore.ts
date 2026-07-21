@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { checkFreighterConnected, getFreighterPublicKey, signInvoiceTransaction } from "../utils/stellar";
+import { playWalletConnect, playWalletDisconnect } from "../utils/audio";
 
 export interface Invoice {
   id: string;
@@ -75,6 +76,10 @@ interface FlowState {
     activeDealsCount: number;
     walletBalance: number; // in XLM
   };
+
+  // OCR Ingestion state
+  scannedInvoice: Omit<Invoice, "id" | "status" | "investors" | "availableFractions"> | null;
+  setScannedInvoice: (invoice: Omit<Invoice, "id" | "status" | "investors" | "availableFractions"> | null) => void;
 }
 
 const INITIAL_INVOICES: Invoice[] = [
@@ -230,6 +235,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
       const pubKey = await getFreighterPublicKey();
       if (pubKey) {
         set({ walletAddress: pubKey, walletConnected: true, walletConnecting: false });
+        playWalletConnect();
         get().addNotification(
           "success",
           "Wallet Connected",
@@ -252,6 +258,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
 
   disconnectWallet: () => {
     set({ walletAddress: null, walletConnected: false });
+    playWalletDisconnect();
     get().addNotification(
       "warning",
       "Wallet Disconnected",
@@ -416,5 +423,9 @@ export const useFlowStore = create<FlowState>((set, get) => ({
     returnsEarned: 2450,
     activeDealsCount: 3,
     walletBalance: 12450
-  }
+  },
+
+  // OCR Ingestion state
+  scannedInvoice: null,
+  setScannedInvoice: (invoice) => set({ scannedInvoice: invoice })
 }));

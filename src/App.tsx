@@ -1,10 +1,13 @@
 "use client";
 
+import { useEffect } from "react";
 import { useFlowStore } from "@/store/useFlowStore";
 import Navbar from "@/components/ui/Navbar";
 import Preloader from "@/components/ui/Preloader";
 import Toasts from "@/components/ui/Toasts";
+import CustomCursor from "@/components/ui/CustomCursor";
 import GlobalCanvas from "@/components/canvas/GlobalCanvas";
+import { playBlip } from "@/utils/audio";
 
 // Pages
 import Home from "./pages/Home";
@@ -19,6 +22,13 @@ import InvoiceDetail from "./pages/InvoiceDetail";
 
 export default function App() {
   const activePage = useFlowStore((state) => state.activePage);
+
+  // Play digital blip sound on route change
+  useEffect(() => {
+    if (activePage) {
+      playBlip();
+    }
+  }, [activePage]);
 
   // Client-side router mapping Zustand activePage to pages
   const renderPageContent = () => {
@@ -55,6 +65,7 @@ export default function App() {
       <Navbar />
       <Preloader />
       <Toasts />
+      <CustomCursor />
 
       {/* 3. Dynamic Page Content Mount Point */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFlowStore } from "@/store/useFlowStore";
 import { 
   TrendingUp, 
@@ -17,11 +17,36 @@ import {
 import Link from "@/components/ui/Link";
 
 export default function Dashboard() {
-  const { invoices, activeRole, setActiveRole, investorStats } = useFlowStore();
+  const { invoices, activeRole, setActiveRole, investorStats, setScannedInvoice } = useFlowStore();
   const [dragActive, setDragActive] = useState(false);
   const [uploadFile, setUploadFile] = useState<string | null>(null);
   const [riskValue, setRiskValue] = useState(50);
   const [autoInvest, setAutoInvest] = useState(true);
+
+  // Live countdown state
+  const [timeLeft, setTimeLeft] = useState({ days: 8, hours: 14, minutes: 32, seconds: 45 });
+
+  useEffect(() => {
+    // 8 days, 14 hours, 32 minutes, 45 seconds from load
+    const targetTime = Date.now() + (8 * 24 * 3600 + 14 * 3600 + 32 * 60 + 45) * 1000;
+    
+    const timer = setInterval(() => {
+      const difference = targetTime - Date.now();
+      if (difference <= 0) {
+        clearInterval(timer);
+        return;
+      }
+      
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((difference / 1000 / 60) % 60);
+      const s = Math.floor((difference / 1000) % 60);
+      
+      setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
+    }, 1000);
+    
+    return () => clearInterval(timer);
+  }, []);
 
   // Business Invoice Stats
   const activeInvoices = invoices.filter(inv => inv.status === "active");
@@ -46,7 +71,27 @@ export default function Dashboard() {
     setDragActive(false);
     
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setUploadFile(e.dataTransfer.files[0].name);
+      const fileName = e.dataTransfer.files[0].name;
+      setUploadFile(fileName);
+      
+      // Simulating AI OCR scanning parsing
+      const mockInvoice = {
+        title: fileName.replace(/\.[^/.]+$/, "") + " Factoring",
+        issuer: "Commercial Suppliers Inc",
+        counterparty: "HyperMarket Group Ltd",
+        amount: Math.floor(12000 + Math.random() * 68000),
+        yieldRate: parseFloat((8.5 + Math.random() * 6).toFixed(1)),
+        dueDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 60 days
+        industry: "Logistics",
+        fractionCount: 100,
+        fractionPrice: 0,
+        country: "Germany",
+        countryCode: "DE",
+        description: `Tokenized trade receivable factoring contract imported via OCR scan. Original source file: ${fileName}`
+      };
+      mockInvoice.fractionPrice = mockInvoice.amount / mockInvoice.fractionCount;
+      
+      setScannedInvoice(mockInvoice);
     }
   };
 
@@ -249,12 +294,13 @@ export default function Dashboard() {
 
               <div className="flex justify-center gap-3 py-2">
                 {[
-                  { val: "08", label: "Days" },
-                  { val: "14", label: "Hours" },
-                  { val: "32", label: "Minutes" }
+                  { val: String(timeLeft.days).padStart(2, '0'), label: "Days" },
+                  { val: String(timeLeft.hours).padStart(2, '0'), label: "Hours" },
+                  { val: String(timeLeft.minutes).padStart(2, '0'), label: "Minutes" },
+                  { val: String(timeLeft.seconds).padStart(2, '0'), label: "Seconds" }
                 ].map((unit, idx) => (
                   <div key={idx} className="flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-xl bg-[#090910] border border-white/10 flex items-center justify-center text-display text-2xl font-black text-white">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[#090910] border border-white/10 flex items-center justify-center text-display text-xl sm:text-2xl font-black text-white">
                       {unit.val}
                     </div>
                     <span className="text-[9px] text-white/40 uppercase tracking-widest mt-1.5">{unit.label}</span>
