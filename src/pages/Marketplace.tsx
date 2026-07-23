@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Link from "@/components/ui/Link";
 import confetti from "canvas-confetti";
+import { playSuccessChime } from "@/utils/audio";
 
 export default function Marketplace() {
   const { invoices, investInInvoice, setCursorHovered } = useFlowStore();
@@ -57,6 +58,7 @@ export default function Marketplace() {
       const success = await investInInvoice(selectedInvoice.id, fractionAmount);
       if (success) {
         setInvestSuccess(true);
+        playSuccessChime();
         // Trigger particle explosion confetti
         confetti({
           particleCount: 120,
@@ -84,7 +86,7 @@ export default function Marketplace() {
       {/* Header and View Toggle */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/5 pb-6">
         <div>
-          <h1 className="font-heading italic text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1">Invoice Exchange</h1>
+          <h1 className="font-heading text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1 font-normal">Invoice Exchange</h1>
           <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
             Soroban Certified Yield-Bearing Assets
           </p>
@@ -98,7 +100,7 @@ export default function Marketplace() {
           className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider border flex items-center gap-2 transition-all duration-300 ${
             showGlobeView 
               ? "bg-gradient-to-r from-gold-dark to-gold text-space-black border-transparent shadow-lg" 
-              : "border-white/10 text-white/80 hover:border-gold/30 hover:text-white bg-[#0A0A0F]"
+              : "border-white/10 text-white/80 hover:border-gold/30 hover:text-white bg-space-black"
           }`}
         >
           <Globe className="w-4 h-4" /> {showGlobeView ? "Standard List Console" : "On-Chain Globe Map"}
@@ -148,9 +150,9 @@ export default function Marketplace() {
 
       {/* Grid Content / Map View */}
       {showGlobeView ? (
-        <div className="relative h-[60vh] rounded-3xl border border-white/10 flex items-center justify-between p-6 select-none bg-transparent overflow-hidden animate-fadeIn">
+        <div className="relative h-[60vh] rounded-3xl border border-white/10 flex items-center justify-between p-6 select-none bg-transparent overflow-hidden animate-fadeIn pointer-events-none">
           {/* Overlay left: description */}
-          <div className="absolute top-6 left-6 p-5 rounded-2xl bg-[#090910]/85 border border-white/10 max-w-xs z-10 shadow-2xl">
+          <div className="absolute top-6 left-6 p-5 rounded-2xl bg-[#090910]/85 border border-white/10 max-w-xs z-10 shadow-2xl pointer-events-auto">
             <h3 className="text-display text-xs font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
               <Globe className="w-4 h-4 text-gold" /> Ledger Node Globe
             </h3>
@@ -160,7 +162,7 @@ export default function Marketplace() {
           </div>
 
           {/* Overlay right: floating inventory status */}
-          <div className="absolute bottom-6 right-6 flex flex-col gap-2.5 z-10 max-h-[80%] overflow-y-auto pr-2">
+          <div className="absolute bottom-6 right-6 flex flex-col gap-2.5 z-10 max-h-[80%] overflow-y-auto pr-2 pointer-events-auto">
             {filteredInvoices.map((inv) => (
               <div key={inv.id} className="px-4 py-3 rounded-xl bg-[#0D0D15]/95 border border-gold/25 text-[10px] text-white flex flex-col gap-1.5 w-52 shadow-xl hover:border-gold transition-colors">
                 <div className="flex justify-between font-bold">

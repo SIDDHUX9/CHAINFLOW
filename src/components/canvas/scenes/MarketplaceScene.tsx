@@ -4,6 +4,7 @@ import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useFlowStore } from "@/store/useFlowStore";
+import { OrbitControls } from "@react-three/drei";
 
 export default function MarketplaceScene() {
   const { invoices } = useFlowStore();
@@ -78,6 +79,12 @@ export default function MarketplaceScene() {
 
   return (
     <group>
+      <OrbitControls 
+        enableZoom={true} 
+        enablePan={false} 
+        minDistance={6} 
+        maxDistance={15} 
+      />
       {/* Atmosphere Glow */}
       <mesh ref={atmosphereRef}>
         <sphereGeometry args={[4.0, 32, 32]} />

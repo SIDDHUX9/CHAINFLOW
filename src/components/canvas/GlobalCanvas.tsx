@@ -96,9 +96,14 @@ function SceneController() {
 }
 
 export default function GlobalCanvas() {
+  const activePage = useFlowStore((state) => state.activePage);
+  const isInteractiveScene = activePage === "/marketplace";
+  const zIndexClass = isInteractiveScene ? "z-0" : "-z-10";
+
   return (
-    <div className="fixed inset-0 w-full h-full -z-10 bg-transparent pointer-events-none">
+    <div className={`fixed inset-0 w-full h-full ${zIndexClass} bg-transparent pointer-events-none`}>
       <Canvas
+        style={{ pointerEvents: isInteractiveScene ? "auto" : "none" }}
         dpr={[1, 2]} // Cap DPR at 2 for performance optimization
         gl={{ 
           antialias: false, // Disabled for post-processing pipeline

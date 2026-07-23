@@ -28,9 +28,9 @@ export default function Analytics() {
       
       {/* Header */}
       <div>
-        <h1 className="font-heading italic text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1">Platform Analytics</h1>
+        <h1 className="font-heading text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1 font-normal">分析局 <span className="font-sans text-2xl font-light ml-2 uppercase text-white/50 tracking-wider">Platform Analytics</span></h1>
         <p className="text-sans text-xs sm:text-sm text-white/50 uppercase tracking-widest mt-1">
-          Decentralized Factoring Telemetry
+          「約定統計と流動性推移」 Decentralized Factoring Telemetry
         </p>
       </div>
 

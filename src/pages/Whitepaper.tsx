@@ -45,7 +45,7 @@ export default function Whitepaper() {
           <FileText className="w-6 h-6 text-gold" />
           <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase">ChainFlow Technical Paper</span>
         </div>
-        <h1 className="text-display text-3xl md:text-5xl font-black text-white">ChainFlow Protocol Whitepaper</h1>
+        <h1 className="font-heading text-white/95 text-3xl md:text-5xl font-normal">Protocol Whitepaper</h1>
         <p className="text-sans text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl leading-relaxed">
           Decentralized Fractional Factoring, Cross-Border Attestation, and On-Chain Liquidity Settlement on the Soroban Smart Contract Platform.
         </p>
@@ -56,7 +56,7 @@ export default function Whitepaper() {
         
         {/* Sticky Left Sidebar Navigation */}
         <div className="lg:col-span-4 sticky top-28 flex flex-col gap-3">
-          <div className="p-5 rounded-2xl bg-[#0E0E18] border border-white/5 flex flex-col gap-4">
+          <div className="p-5 rounded-2xl bg-space-card border border-white/5 flex flex-col gap-4">
             <span className="text-[9px] font-mono tracking-widest text-white/30 uppercase font-black">Table of Contents</span>
             
             <nav className="flex flex-col gap-2">

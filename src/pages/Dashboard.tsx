@@ -87,6 +87,9 @@ export default function Dashboard() {
         fractionPrice: 0,
         country: "Germany",
         countryCode: "DE",
+        lat: 52.5200,
+        lng: 13.4050,
+        riskScore: Math.floor(15 + Math.random() * 35),
         description: `Tokenized trade receivable factoring contract imported via OCR scan. Original source file: ${fileName}`
       };
       mockInvoice.fractionPrice = mockInvoice.amount / mockInvoice.fractionCount;
@@ -101,14 +104,14 @@ export default function Dashboard() {
       {/* Page Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/5 pb-6">
         <div>
-          <h1 className="font-heading italic text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1">Command Center</h1>
+          <h1 className="font-heading text-white/95 text-4xl md:text-6xl tracking-tight leading-[0.85] mb-1 font-normal">Command Center</h1>
           <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
             Soroban Factoring Telemetry & Ledger Control
           </p>
         </div>
 
         {/* Role Toggle Switcher */}
-        <div className="flex bg-[#090910] border border-white/10 rounded-full p-1 self-stretch md:self-auto shadow-inner">
+        <div className="flex bg-space-black border border-white/10 rounded-full p-1 self-stretch md:self-auto shadow-inner">
           <button
             onClick={() => setActiveRole("investor")}
             className={`flex-1 md:flex-initial px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 ${
@@ -173,10 +176,10 @@ export default function Dashboard() {
               onDragLeave={handleDrag}
               onDrop={handleDrop}
               className={`glass p-12 rounded-3xl border-2 border-dashed flex flex-col items-center justify-center text-center transition-all ${
-                dragActive ? "border-gold bg-[#141423] scale-[0.99]" : "border-white/10 hover:border-gold/30"
+                dragActive ? "border-gold bg-[#141517] scale-[0.99]" : "border-white/10 hover:border-[#C5A059]/40"
               }`}
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#090910] flex items-center justify-center border border-white/10 mb-4 animate-float">
+              <div className="w-16 h-16 rounded-2xl bg-space-black flex items-center justify-center border border-white/10 mb-4 animate-float">
                 <UploadCloud className="w-6 h-6 text-gold" />
               </div>
               
@@ -185,7 +188,7 @@ export default function Dashboard() {
                   <span className="text-sans text-[10px] text-accent-green font-black uppercase tracking-wider">
                     OCR Contract Scan Complete
                   </span>
-                  <p className="text-display text-sm font-black text-white px-4 py-2 rounded-lg bg-[#090910] border border-white/5 mt-1">
+                  <p className="text-display text-sm font-black text-white px-4 py-2 rounded-lg bg-space-black border border-white/5 mt-1">
                     {uploadFile}
                   </p>
                   <Link
@@ -197,10 +200,10 @@ export default function Dashboard() {
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 relative z-10">
-                  <h4 className="text-display text-lg font-bold text-white">
-                    Secure Invoice Ingestion Chamber
+                  <h4 className="font-heading text-xl font-normal text-white">
+                    Ingestion Chamber
                   </h4>
-                  <p className="text-sans text-xs text-white/50 max-w-sm leading-relaxed mx-auto">
+                  <p className="font-body font-light text-xs text-white/50 max-w-sm leading-relaxed mx-auto">
                     Drag and drop commercial invoices (PDF, XML, or images). The Stellar oracle model will parse counterparties, maturity, and ledger values.
                   </p>
                   <Link

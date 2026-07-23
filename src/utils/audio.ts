@@ -18,31 +18,39 @@ function getAudioContext() {
 }
 
 /**
- * Play a light, crisp digital click when hovering/clicking buttons.
+ * Play a light, resonant dry woodblock strike (hyōshigi).
  */
 export function playClick() {
   const ctx = getAudioContext();
   if (!ctx || ctx.state === "suspended") return;
   
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
+  const osc1 = ctx.createOscillator();
+  const osc2 = ctx.createOscillator();
+  const gainNode = ctx.createGain();
   
-  osc.connect(gain);
-  gain.connect(ctx.destination);
+  osc1.connect(gainNode);
+  osc2.connect(gainNode);
+  gainNode.connect(ctx.destination);
   
-  osc.type = "sine";
-  osc.frequency.setValueAtTime(1000, ctx.currentTime);
-  osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.04);
+  osc1.type = "sine";
+  osc1.frequency.setValueAtTime(880, ctx.currentTime);
+  osc1.frequency.exponentialRampToValueAtTime(650, ctx.currentTime + 0.04);
   
-  gain.gain.setValueAtTime(0.02, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+  osc2.type = "sine";
+  osc2.frequency.setValueAtTime(1320, ctx.currentTime);
+  osc2.frequency.exponentialRampToValueAtTime(950, ctx.currentTime + 0.04);
   
-  osc.start();
-  osc.stop(ctx.currentTime + 0.04);
+  gainNode.gain.setValueAtTime(0.025, ctx.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+  
+  osc1.start();
+  osc2.start();
+  osc1.stop(ctx.currentTime + 0.04);
+  osc2.stop(ctx.currentTime + 0.04);
 }
 
 /**
- * Play a low-pass futuristic digital blip during screen transitions.
+ * Play a gentle bamboo water-dropper (shishi-odoshi) hollow drop sound.
  */
 export function playBlip() {
   const ctx = getAudioContext();
@@ -54,19 +62,20 @@ export function playBlip() {
   osc.connect(gain);
   gain.connect(ctx.destination);
   
-  osc.type = "triangle";
-  osc.frequency.setValueAtTime(600, ctx.currentTime);
-  osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.12);
+  osc.type = "sine";
+  // Pitch rises quickly like a bubble or droplet escaping a hollow reed
+  osc.frequency.setValueAtTime(320, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(780, ctx.currentTime + 0.07);
   
-  gain.gain.setValueAtTime(0.04, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+  gain.gain.setValueAtTime(0.06, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
   
   osc.start();
-  osc.stop(ctx.currentTime + 0.12);
+  osc.stop(ctx.currentTime + 0.07);
 }
 
 /**
- * Play an ascending double chime on successful wallet connection.
+ * Play an ascending pentatonic Koto pluck sequence on wallet connection.
  */
 export function playWalletConnect() {
   const ctx = getAudioContext();
@@ -74,61 +83,78 @@ export function playWalletConnect() {
   
   const now = ctx.currentTime;
   
-  const playNote = (freq: number, delay: number, duration: number) => {
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
+  const playKotoNote = (freq: number, delay: number, duration: number) => {
+    const oscBase = ctx.createOscillator();
+    const oscPluck = ctx.createOscillator();
+    const gainBase = ctx.createGain();
+    const gainPluck = ctx.createGain();
     
-    osc.connect(gain);
-    gain.connect(ctx.destination);
+    oscBase.connect(gainBase);
+    oscPluck.connect(gainPluck);
+    gainBase.connect(ctx.destination);
+    gainPluck.connect(ctx.destination);
     
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(523.25, now + delay); // C5 start
-    osc.frequency.exponentialRampToValueAtTime(freq, now + delay + 0.05);
+    oscBase.type = "triangle";
+    oscBase.frequency.setValueAtTime(freq, now + delay);
     
-    gain.gain.setValueAtTime(0, now + delay);
-    gain.gain.linearRampToValueAtTime(0.05, now + delay + 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + delay + duration);
+    gainBase.gain.setValueAtTime(0, now + delay);
+    gainBase.gain.linearRampToValueAtTime(0.05, now + delay + 0.015);
+    gainBase.gain.exponentialRampToValueAtTime(0.001, now + delay + duration);
     
-    osc.start(now + delay);
-    osc.stop(now + delay + duration);
+    // Quick high metallic pluck transient
+    oscPluck.type = "sine";
+    oscPluck.frequency.setValueAtTime(freq * 3, now + delay);
+    gainPluck.gain.setValueAtTime(0, now + delay);
+    gainPluck.gain.linearRampToValueAtTime(0.025, now + delay + 0.005);
+    gainPluck.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.04);
+    
+    oscBase.start(now + delay);
+    oscPluck.start(now + delay);
+    oscBase.stop(now + delay + duration);
+    oscPluck.stop(now + delay + duration);
   };
   
-  playNote(659.25, 0, 0.18); // E5
-  playNote(987.77, 0.08, 0.28); // B5
+  // Traditional scale notes
+  playKotoNote(523.25, 0, 0.45);    // C5
+  playKotoNote(659.25, 0.08, 0.45);  // E5
+  playKotoNote(880.00, 0.16, 0.6);   // A5
 }
 
 /**
- * Play a descending warning chime when wallet is disconnected.
+ * Play a deep, resonant temple bell (Kanshō) chime on wallet disconnect.
  */
 export function playWalletDisconnect() {
   const ctx = getAudioContext();
   if (!ctx || ctx.state === "suspended") return;
   
   const now = ctx.currentTime;
+  // Blend fundamental deep frequencies with non-harmonic overtones for authentic bell timbre
+  const overtones = [146.83, 293.66, 440.00, 587.33]; // D3, D4, A4, D5
   
-  const playNote = (freq: number, delay: number, duration: number) => {
+  overtones.forEach((freq, idx) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     
     osc.connect(gain);
     gain.connect(ctx.destination);
     
-    osc.type = "sine";
-    gain.gain.setValueAtTime(0.04, now + delay);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + delay + duration);
+    osc.type = idx === 0 ? "triangle" : "sine";
+    osc.frequency.setValueAtTime(freq, now);
     
-    osc.frequency.setValueAtTime(freq, now + delay);
+    const maxVol = idx === 0 ? 0.08 : 0.035;
+    const decay = idx === 0 ? 1.6 : idx === 1 ? 1.0 : 0.6;
     
-    osc.start(now + delay);
-    osc.stop(now + delay + duration);
-  };
-  
-  playNote(440.00, 0, 0.15); // A4
-  playNote(293.66, 0.08, 0.25); // D4
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(maxVol, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + decay);
+    
+    osc.start(now);
+    osc.stop(now + decay);
+  });
 }
 
 /**
- * Play a rich, beautiful major chord cascade on successful transaction confirmation.
+ * Play a rich, beautiful Japanese Koto chord arpeggio cascade on success.
  */
 export function playSuccessChime() {
   const ctx = getAudioContext();
@@ -136,26 +162,40 @@ export function playSuccessChime() {
   
   const now = ctx.currentTime;
   
-  const playNote = (freq: number, delay: number, duration: number, vol: number = 0.06) => {
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
+  const playKotoNote = (freq: number, delay: number, duration: number) => {
+    const oscBase = ctx.createOscillator();
+    const oscPluck = ctx.createOscillator();
+    const gainBase = ctx.createGain();
+    const gainPluck = ctx.createGain();
     
-    osc.connect(gain);
-    gain.connect(ctx.destination);
+    oscBase.connect(gainBase);
+    oscPluck.connect(gainPluck);
+    gainBase.connect(ctx.destination);
+    gainPluck.connect(ctx.destination);
     
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(freq, now + delay);
+    oscBase.type = "triangle";
+    oscBase.frequency.setValueAtTime(freq, now + delay);
     
-    gain.gain.setValueAtTime(0, now + delay);
-    gain.gain.linearRampToValueAtTime(vol, now + delay + 0.05);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + delay + duration);
+    gainBase.gain.setValueAtTime(0, now + delay);
+    gainBase.gain.linearRampToValueAtTime(0.045, now + delay + 0.015);
+    gainBase.gain.exponentialRampToValueAtTime(0.001, now + delay + duration);
     
-    osc.start(now + delay);
-    osc.stop(now + delay + duration);
+    oscPluck.type = "sine";
+    oscPluck.frequency.setValueAtTime(freq * 3.1, now + delay);
+    gainPluck.gain.setValueAtTime(0, now + delay);
+    gainPluck.gain.linearRampToValueAtTime(0.02, now + delay + 0.005);
+    gainPluck.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.05);
+    
+    oscBase.start(now + delay);
+    oscPluck.start(now + delay);
+    oscBase.stop(now + delay + duration);
+    oscPluck.stop(now + delay + duration);
   };
   
-  playNote(523.25, 0, 0.35);    // C5
-  playNote(659.25, 0.06, 0.35);  // E5
-  playNote(783.99, 0.12, 0.35);  // G5
-  playNote(1046.50, 0.18, 0.5);  // C6
+  // Ascending Sakura Pentatonic cascade
+  playKotoNote(440.00, 0, 0.6);     // A4
+  playKotoNote(523.25, 0.05, 0.6);   // C5
+  playKotoNote(659.25, 0.10, 0.6);   // E5
+  playKotoNote(698.46, 0.15, 0.8);   // F5
+  playKotoNote(880.00, 0.20, 1.2);   // A5
 }

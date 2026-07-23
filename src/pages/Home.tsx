@@ -112,27 +112,27 @@ export default function Home() {
         alt="Sumi-e Zen background"
       />
       {/* Glow highlight */}
-      <div className="hero-glow absolute -top-24 left-1/2 -translate-x-1/2 w-[70%] h-[350px] bg-gradient-to-b from-gold/5 via-space-purple/5 to-transparent blur-[80px] rounded-full pointer-events-none" />
+      <div className="hero-glow absolute -top-24 left-1/2 -translate-x-1/2 w-[70%] h-[350px] bg-gradient-to-b from-gold/5 via-space-purple/2 to-transparent blur-[80px] rounded-full pointer-events-none" />
 
       {/* 1. HERO SECTION */}
       <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-16 pb-0 mt-16">
         {/* Left Column: Asymmetric Left-Aligned content */}
         <div className="lg:col-span-7 flex flex-col gap-6 text-left relative z-10 px-4">
-          <div className="hero-badge inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-gold/20 bg-[#10101C]/90 shadow-[0_0_20px_rgba(212,175,55,0.06)]">
+          <div className="hero-badge inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-gold/25 bg-space-card/90 shadow-[0_0_20px_rgba(197,160,89,0.06)]">
             <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
             <span className="text-[10px] tracking-[0.25em] font-light uppercase text-gold font-body">
               Soroban Smart Contract Liquidity
             </span>
           </div>
 
-          <h1 className="hero-title font-heading italic text-white/95 text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.85] mb-2">
+          <h1 className="hero-title font-heading text-white/95 text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.85] mb-2 font-normal">
             Beyond Silence, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark filter drop-shadow-[0_2px_15px_rgba(212,175,55,0.15)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark filter drop-shadow-[0_2px_15px_rgba(197,160,89,0.15)] font-heading">
               Pure Trade Flow.
             </span>
           </h1>
 
-          <p className="hero-desc font-body font-light text-white/50 text-sm sm:text-base max-w-xl leading-relaxed mt-1">
+          <p className="hero-desc font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
             Simplifying international invoice factoring. By removing traditional friction, we create digital havens for deep capital security and pure liquid flows on Stellar.
           </p>
 
@@ -141,7 +141,7 @@ export default function Home() {
               href="/create"
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className="px-8 py-4 rounded-sm clip-corners bg-gradient-to-r from-gold-dark via-gold to-gold-light text-[#0A0A0F] text-xs font-semibold uppercase tracking-widest shadow-[0_4px_25px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_35px_rgba(212,175,55,0.45)] hover:scale-[1.03] transition-all duration-300 active-tactile"
+              className="px-8 py-4 rounded-sm clip-corners bg-gradient-to-r from-gold-dark via-gold to-gold-light text-space-black text-xs font-bold uppercase tracking-widest shadow-[0_4px_25px_rgba(197,160,89,0.2)] hover:shadow-[0_4px_35px_rgba(197,160,89,0.45)] hover:scale-[1.03] transition-all duration-300 active-tactile"
             >
               Begin Journey
             </Link>
@@ -149,7 +149,7 @@ export default function Home() {
               href="/marketplace"
               onMouseEnter={() => setCursorHovered(true)}
               onMouseLeave={() => setCursorHovered(false)}
-              className="px-8 py-4 rounded-sm clip-corners bg-[#0F0F1B] hover:bg-[#151526] border border-white/10 hover:border-gold/30 text-white text-xs font-semibold uppercase tracking-widest hover:scale-[1.03] transition-all duration-300 active-tactile"
+              className="px-8 py-4 rounded-sm clip-corners bg-space-card hover:bg-space-card/80 border border-[#C5A059]/25 hover:border-gold text-white text-xs font-bold uppercase tracking-widest hover:scale-[1.03] transition-all duration-300 active-tactile"
             >
               Audit Exchange
             </Link>
@@ -167,6 +167,11 @@ export default function Home() {
             />
             {/* Top glass highlights */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full z-10" />
+            
+            {/* Hanko Stamp Overlay */}
+            <div className="absolute bottom-16 right-6 z-20 hanko-stamp px-3 py-1 rounded-sm border-2 text-[9px] font-bold select-none opacity-85 pointer-events-none font-mono">
+              ORACLE VERIFIED
+            </div>
             
             <div className="relative z-10 flex justify-between items-center border-b border-white/5 pb-4 mb-6">
               <span className="text-[9px] font-mono tracking-widest text-white/40 uppercase">LEDGER_STATE_REPLAY</span>
@@ -303,7 +308,7 @@ export default function Home() {
       </section>
 
       {/* 3. INTERACTIVE CALCULATOR SECTION */}
-      <section className="relative w-full">
+      <section className="relative w-full animate-fadeIn">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left panel: sliders */}
@@ -312,7 +317,7 @@ export default function Home() {
               <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase flex items-center gap-1.5">
                 <Calculator className="w-3.5 h-3.5" /> Finance Estimation Model
               </span>
-              <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
+              <h2 className="font-heading text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2 font-normal">
                 Factoring Calculator
               </h2>
               <p className="font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
@@ -451,7 +456,7 @@ export default function Home() {
       <section className="flex flex-col gap-14 w-full">
         <div className="text-center max-w-2xl mx-auto flex flex-col gap-2">
           <span className="text-[10px] tracking-[0.3em] font-black text-gold uppercase">Soroban Smart Oracles</span>
-          <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
+          <h2 className="font-heading text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2 font-normal">
             Programmable Consensus Flow
           </h2>
           <p className="font-body font-light text-white/60 text-sm max-w-xl mx-auto leading-relaxed mt-1">
@@ -631,7 +636,7 @@ export default function Home() {
             <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase flex items-center gap-1">
               <TrendingUp className="w-3.5 h-3.5" /> High Yield Receivables
             </span>
-            <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
+            <h2 className="font-heading text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2 font-normal">
               Active Factoring Pools
             </h2>
             <p className="font-body font-light text-white/60 text-sm max-w-xl leading-relaxed mt-1">
@@ -727,7 +732,7 @@ export default function Home() {
           <span className="text-[10px] tracking-[0.3em] font-bold text-gold uppercase flex items-center justify-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" /> Decentralized Integrity Verification
           </span>
-          <h2 className="font-heading italic text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2">
+          <h2 className="font-heading text-white/95 text-4xl sm:text-6xl tracking-tight leading-[0.85] mb-2 font-normal">
             Attestation Telemetry
           </h2>
           <p className="font-body font-light text-white/60 text-sm max-w-xl mx-auto leading-relaxed mt-1">

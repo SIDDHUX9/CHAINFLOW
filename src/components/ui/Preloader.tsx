@@ -63,58 +63,57 @@ export default function Preloader() {
 
   return (
     <div className="preloader-bg fixed inset-0 z-50 flex flex-col items-center justify-center bg-space-black select-none">
-      {/* 3D Liquid Torus Simulation */}
+      {/* SVG Ensō Circle Simulation */}
       <div className="preloader-torus relative w-64 h-64 flex items-center justify-center mb-8">
-        {/* Outer glowing gold aura */}
-        <div className="absolute inset-0 rounded-full border border-gold/10 blur-xl animate-pulse" />
+        {/* Outer glowing aura */}
+        <div className="absolute inset-0 rounded-full bg-[#C5A059]/3 blur-xl animate-pulse" />
         
-        {/* Animated concentric rings */}
-        <div 
-          className="absolute w-full h-full rounded-full border border-dashed border-gold/30 animate-spin" 
-          style={{ animationDuration: "25s" }}
-        />
-        <div 
-          className="absolute w-[80%] h-[80%] rounded-full border border-gold/20 animate-spin" 
-          style={{ animationDuration: "12s", animationDirection: "reverse" }}
-        />
-        
-        {/* Pulsing liquid gold core */}
-        <div className="absolute w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-gold-dark via-gold to-gold-light opacity-80 blur-xs shadow-[0_0_50px_rgba(212,175,55,0.4)] animate-pulse">
-          <div className="absolute inset-2 rounded-full bg-space-black flex items-center justify-center">
-            <span className="text-display text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">
-              {loadingProgress}%
-            </span>
-          </div>
-        </div>
-
-        {/* Orbiting particles */}
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-gold shadow-[0_0_10px_#D4AF37]"
+        {/* SVG Ensō Circle */}
+        <svg className="absolute w-full h-full rotate-[-90deg]" viewBox="0 0 220 220">
+          <circle
+            cx="110"
+            cy="110"
+            r="90"
+            stroke="rgba(197, 160, 89, 0.06)"
+            strokeWidth="2"
+            fill="none"
+          />
+          <circle
+            cx="110"
+            cy="110"
+            r="90"
+            stroke="#C5A059"
+            strokeWidth="5.5"
+            strokeLinecap="round"
+            fill="none"
+            className="enso-circle"
             style={{
-              transform: `rotate(${i * 60}deg) translate(110px) rotate(-${i * 60}deg)`,
-              animation: `spin 10s infinite linear`
+              strokeDasharray: 565,
+              strokeDashoffset: 565 - (565 * loadingProgress) / 100,
+              transition: "stroke-dashoffset 0.15s ease-out",
             }}
           />
-        ))}
+        </svg>
+        
+        {/* Center Loading Status */}
+        <div className="absolute flex flex-col items-center justify-center">
+          <span className="font-heading text-5xl font-medium text-white leading-none">
+            {loadingProgress}%
+          </span>
+          <span className="font-heading text-xs tracking-[0.25em] text-accent-red font-bold uppercase mt-2 animate-pulse">
+            LOADING
+          </span>
+        </div>
       </div>
 
       <div className="preloader-text flex flex-col items-center">
-        <h1 className="text-display text-3xl md:text-5xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-gold to-white mb-2">
-          CHAINFLOW
+        <h1 className="font-heading text-4xl md:text-5xl font-normal tracking-[0.15em] text-white mb-2">
+          ChainFlow
         </h1>
-        <p className="text-sans text-xs tracking-[0.3em] text-gold uppercase opacity-80">
+        <p className="font-heading text-xs tracking-[0.3em] text-[#C5A059] uppercase opacity-90">
           Liquidity, Unlocked{dots}
         </p>
       </div>
-
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg) translate(110px) rotate(0deg); }
-          to { transform: rotate(360deg) translate(110px) rotate(-360deg); }
-        }
-      `}</style>
     </div>
   );
 }

@@ -168,9 +168,9 @@ export default function CreateInvoice() {
       <div className="lg:col-span-7 flex flex-col gap-8">
         {/* Wizard Header */}
         <div className="text-left flex flex-col items-start border-b border-white/5 pb-6">
-        <h1 className="text-display text-3xl md:text-5xl font-black text-white">Invoice Tokenizer</h1>
+        <h1 className="font-heading text-white/95 text-3xl md:text-5xl font-normal">債権鋳造所 <span className="font-sans text-2xl font-light ml-2 uppercase text-white/50 tracking-wider">Invoice Tokenizer</span></h1>
         <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
-          Soroban Asset Fractionalization Chamber
+          「証券化と流動化の儀」 Soroban Asset Fractionalization Chamber
         </p>
 
         {/* Dynamic step capsules */}

@@ -1,11 +1,10 @@
-"use client";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFlowStore } from "@/store/useFlowStore";
 import Navbar from "@/components/ui/Navbar";
 import Preloader from "@/components/ui/Preloader";
 import Toasts from "@/components/ui/Toasts";
 import CustomCursor from "@/components/ui/CustomCursor";
+
 import GlobalCanvas from "@/components/canvas/GlobalCanvas";
 import { playBlip } from "@/utils/audio";
 
@@ -22,12 +21,36 @@ import InvoiceDetail from "./pages/InvoiceDetail";
 
 export default function App() {
   const activePage = useFlowStore((state) => state.activePage);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Play digital blip sound on route change
   useEffect(() => {
     if (activePage) {
       playBlip();
     }
+  }, [activePage]);
+
+  // Track scrolling progress percentage for Zen Sun indicator
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress(window.scrollY / totalScroll);
+      } else {
+        setScrollProgress(0);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run once on page change to recalculate
+    handleScroll();
+    
+    // Tiny delay to ensure page height has settled
+    const timeout = setTimeout(handleScroll, 150);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
+    };
   }, [activePage]);
 
   // Client-side router mapping Zustand activePage to pages
@@ -57,7 +80,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-[#F5F5FA] overflow-x-hidden relative font-sans">
+    <div className="min-h-screen bg-[#0B0C0E] text-[#ECE6D9] overflow-x-hidden relative font-sans">
       {/* 1. Master WebGL Scene (crawling stars & liquid gold nodes in background) */}
       <GlobalCanvas />
 
@@ -67,7 +90,13 @@ export default function App() {
       <Toasts />
       <CustomCursor />
 
-      {/* 3. Dynamic Page Content Mount Point */}
+      {/* 3. Scroll progress Sun thread indicator */}
+      <div className="scroll-progress-container hidden md:flex">
+        <div className="scroll-progress-line animate-pulse" style={{ height: `${scrollProgress * 100}%` }} />
+        <div className="scroll-progress-dot" style={{ transform: `translate3d(0, calc(${scrollProgress} * 70vh - 4px), 0)` }} />
+      </div>
+
+      {/* 4. Dynamic Page Content Mount Point */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16">
         {renderPageContent()}
       </main>

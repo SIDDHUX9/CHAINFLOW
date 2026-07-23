@@ -45,6 +45,11 @@ export default function InvoiceDetail() {
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260227_042027_c4b2f2ea-1c7c-4d6e-9e3d-81a78063703f.mp4"
           className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none z-0 mix-blend-overlay"
         />
+
+        {/* Hanko Stamp Overlay */}
+        <div className="absolute top-6 right-6 z-20 hanko-stamp px-3 py-1 rounded-sm border-2 text-[9px] font-bold select-none opacity-90 pointer-events-none font-mono">
+          ATTESTED
+        </div>
         
         <div className="relative z-10 w-full flex flex-col md:flex-row justify-between gap-8">
           <div className="flex flex-col gap-5">
@@ -52,7 +57,7 @@ export default function InvoiceDetail() {
             <span className="text-[9px] uppercase text-gold tracking-widest font-black bg-gold/10 px-3 py-1 rounded-full border border-gold/20 inline-block">
               {invoice.industry} Sector
             </span>
-            <h1 className="text-display text-2xl md:text-4xl font-black text-white mt-3.5 leading-tight">
+            <h1 className="font-heading text-white/95 text-2xl md:text-4xl font-normal mt-3.5 leading-tight">
               {invoice.title}
             </h1>
             <p className="text-sans text-[10px] text-white/40 mt-1 uppercase font-mono tracking-wider">
@@ -72,7 +77,7 @@ export default function InvoiceDetail() {
         </div>
 
         {/* Factoring Pricing Callout */}
-        <div className="p-6 rounded-2xl bg-[#090910] border border-gold/25 flex flex-col justify-between items-center md:items-end text-center md:text-right shrink-0 min-w-[220px] shadow-lg">
+        <div className="p-6 rounded-2xl bg-space-black border border-gold/25 flex flex-col justify-between items-center md:items-end text-center md:text-right shrink-0 min-w-[220px] shadow-lg">
           <div className="flex flex-col gap-1">
             <span className="text-[9px] text-white/40 uppercase tracking-widest font-bold">Principal Capital</span>
             <span className="text-display text-3xl font-black text-white">${invoice.amount.toLocaleString()}</span>
@@ -93,7 +98,7 @@ export default function InvoiceDetail() {
         <div className="glass p-8 rounded-3xl border border-white/5 flex flex-col gap-6">
           <div className="flex items-center gap-2 text-gold border-b border-white/5 pb-4">
             <Activity className="w-5 h-5" />
-            <h3 className="text-display text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="font-heading text-sm font-bold text-white uppercase tracking-wider">
               On-Chain Audit Timeline
             </h3>
           </div>

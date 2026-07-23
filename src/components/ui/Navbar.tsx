@@ -41,16 +41,16 @@ export default function Navbar() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-3 group"
             onMouseEnter={() => setCursorHovered(true)}
             onMouseLeave={() => setCursorHovered(false)}
           >
-            <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-gold-dark via-gold to-gold-light p-[1px] shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transition-all">
-              <div className="w-full h-full rounded-full bg-space-black flex items-center justify-center font-display text-sm font-black text-gold">
+            <div className="relative w-7 h-7 flex items-center justify-center border-2 border-accent-red rounded bg-accent-red/5 rotate-[-3deg] shadow-[inset_0_0_4px_rgba(201,74,41,0.2)] group-hover:rotate-[2deg] transition-transform duration-300">
+              <span className="font-heading font-black text-sm text-accent-red tracking-tighter leading-none select-none">
                 CF
-              </div>
+              </span>
             </div>
-            <span className="font-heading italic text-xl font-normal text-white group-hover:text-gold transition-colors tracking-tight">
+            <span className="font-heading text-lg font-normal text-white group-hover:text-gold transition-colors tracking-wider">
               ChainFlow
             </span>
           </Link>
@@ -65,18 +65,20 @@ export default function Navbar() {
                   href={item.path}
                   onMouseEnter={() => setCursorHovered(true)}
                   onMouseLeave={() => setCursorHovered(false)}
-                  className={`relative px-4 py-1.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-colors duration-300 ${
+                  className={`relative px-4 py-1.5 rounded-full transition-colors duration-300 ${
                     isActive ? "text-space-black font-bold" : "text-white/60 hover:text-white"
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="nav-glow-underline"
-                      className="absolute inset-0 bg-gradient-to-r from-gold via-gold-light to-gold rounded-full shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+                      className="absolute inset-0 bg-gradient-to-r from-gold via-gold-light to-gold rounded-full shadow-[0_0_15px_rgba(197,160,89,0.3)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10">{item.name}</span>
+                  <span className="relative z-10 flex items-center gap-1">
+                    <span className="text-[10px] tracking-widest uppercase font-semibold">{item.name}</span>
+                  </span>
                 </Link>
               );
             })}
@@ -176,11 +178,11 @@ export default function Navbar() {
                   <Link
                     href={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-display text-2xl font-bold tracking-widest uppercase ${
+                    className={`text-display text-2xl font-bold tracking-widest uppercase flex items-center justify-center gap-3 ${
                       pathname === item.path ? "text-gold" : "text-white/60"
                     }`}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
                   </Link>
                 </motion.div>
               ))}

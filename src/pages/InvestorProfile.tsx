@@ -43,9 +43,14 @@ export default function InvestorProfile() {
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260207_050933_33e2620d-09cd-43a2-80ef-4cdbb42f4194.mp4"
           className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none z-0 mix-blend-overlay"
         />
+
+        {/* Hanko Stamp Overlay */}
+        <div className="absolute top-6 right-6 z-20 hanko-stamp px-3 py-1 rounded-sm border-2 text-[9px] font-bold select-none opacity-90 pointer-events-none font-mono">
+          ACCREDITED
+        </div>
         
         {/* Holographic Avatar ring */}
-        <div className="w-28 h-28 rounded-full border-2 border-gold/30 flex items-center justify-center bg-[#090910] relative group shadow-md shrink-0 z-10">
+        <div className="w-28 h-28 rounded-full border-2 border-gold/30 flex items-center justify-center bg-space-black relative group shadow-md shrink-0 z-10">
           <div className="absolute inset-1.5 rounded-full border border-dashed border-gold/20 animate-spin" style={{ animationDuration: "15s" }} />
           <Users className="w-10 h-10 text-gold" />
         </div>
@@ -55,7 +60,7 @@ export default function InvestorProfile() {
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold/20 bg-gold/10 text-[9px] uppercase tracking-widest font-black text-gold">
               <Award className="w-3.5 h-3.5" /> Accredited Backing Partner
             </div>
-            <h1 className="text-display text-2xl md:text-4xl font-black mt-3 text-white leading-tight">{profile.name}</h1>
+            <h1 className="font-heading text-white/95 text-2xl md:text-4xl font-normal mt-3 leading-tight">{profile.name}</h1>
             <p className="text-sans text-[10px] text-white/40 mt-1 uppercase tracking-widest font-mono">
               Ledger Address: {profile.pubKey}
             </p>

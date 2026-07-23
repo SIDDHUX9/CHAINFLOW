@@ -83,8 +83,8 @@ const signFreighterTx = async (envelopeXdr) => {
       {/* Left panel: Documentation Suite (col-span-8) */}
       <div className="lg:col-span-8 flex flex-col gap-8">
         {/* Header */}
-        <div className="border-b border-white/5 pb-6 text-left flex flex-col items-start">
-          <h1 className="text-display text-3xl md:text-5xl font-black text-white">Developer Portal</h1>
+        <div className="border-b border-white/5 pb-6 text-left flex flex-col items-start animate-fadeIn">
+          <h1 className="font-heading text-white/95 text-3xl md:text-5xl font-normal">Developer Portal</h1>
           <p className="text-sans text-xs sm:text-sm text-white/40 uppercase tracking-widest mt-1">
             ChainFlow Soroban Smart Contract & SDK Documentation
           </p>
