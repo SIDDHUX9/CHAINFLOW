@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #0B0C0E;
-  --foreground: #ECE6D9;
+  --background: #050508;
+  --foreground: #F3F4F6;
 }
 
 body {
@@ -15,9 +15,9 @@ body {
   cursor: default;
 }
 
-/* Custom Japanese Selection */
+/* Custom Selection */
 ::selection {
-  background: rgba(197, 160, 89, 0.25);
+  background: rgba(212, 175, 55, 0.25);
   color: #ffffff;
 }
 
@@ -28,79 +28,57 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0C0E;
+  background: #050508;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(197, 160, 89, 0.35);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A059;
+  background: rgba(212, 175, 55, 0.4);
 }
 
-/* Washi Paper Card Panels with Soft Lacquer Gold Highlights */
+/* Apple-Grade Frosted Glass Cards */
 .glass {
-  background: rgba(20, 21, 23, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(197, 160, 89, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  background: rgba(14, 16, 23, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   position: relative;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass::before {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: inherit;
-  padding: 1.2px;
-  background: linear-gradient(180deg,
-    rgba(197, 160, 89, 0.2) 0%, rgba(197, 160, 89, 0.05) 30%,
-    rgba(197, 160, 89, 0) 50%, rgba(197, 160, 89, 0) 70%,
-    rgba(197, 160, 89, 0.05) 80%, rgba(197, 160, 89, 0.2) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass:hover {
-  background: rgba(24, 25, 28, 0.88);
-  border-color: rgba(197, 160, 89, 0.22);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: rgba(20, 23, 32, 0.82);
+  border-color: rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 .glass-premium {
-  background: rgba(22, 23, 26, 0.9);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(197, 160, 89, 0.14);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  background: rgba(18, 20, 29, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.08);
   position: relative;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-premium::before {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(180deg,
-    rgba(197, 160, 89, 0.3) 0%, rgba(197, 160, 89, 0.08) 30%,
-    rgba(197, 160, 89, 0) 50%, rgba(197, 160, 89, 0) 70%,
-    rgba(197, 160, 89, 0.08) 80%, rgba(197, 160, 89, 0.3) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-premium:hover {
-  background: rgba(26, 27, 30, 0.94);
-  border-color: rgba(197, 160, 89, 0.28);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  background: rgba(24, 27, 39, 0.92);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.glass-apple {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Tactile Click Physics */
@@ -109,87 +87,27 @@ body {
 }
 
 .active-tactile:active {
-  transform: scale(0.97) translateY(1px);
-  filter: brightness(0.9);
+  transform: scale(0.98);
+  filter: brightness(0.95);
 }
 
-
-
-/* Animate glow borders */
+/* Subtle Glow keyframes */
 @keyframes borderGlow {
-  0%, 100% { border-color: rgba(197, 160, 89, 0.1); }
-  50% { border-color: rgba(197, 160, 89, 0.35); }
+  0%, 100% { border-color: rgba(212, 175, 55, 0.15); }
+  50% { border-color: rgba(212, 175, 55, 0.4); }
 }
 
 .animate-border-glow {
   animation: borderGlow 4s infinite ease-in-out;
 }
 
-/* Keyframe animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
 .animate-float {
   animation: float 6s infinite ease-in-out;
-}
-
-/* Smooth page transitions custom CSS */
-.page-transition-enter {
-  opacity: 0;
-  transform: scale(0.98);
-}
-.page-transition-enter-active {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 800ms ease-out, transform 800ms ease-out;
-}
-.page-transition-exit {
-  opacity: 1;
-  transform: scale(1);
-}
-.page-transition-exit-active {
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 600ms ease-in, transform 600ms ease-in;
-}
-
-/* Geometric Clipped Corners */
-.clip-corners {
-  clip-path: polygon(0% 0%, calc(100% - 10px) 0%, 100% 10px, 100% 100%, 10px 100%, 0% calc(100% - 10px));
-}
-
-/* Ensō Zen Circle Stroke Animation */
-@keyframes drawEnso {
-  0% {
-    stroke-dashoffset: 628;
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-.enso-circle {
-  stroke-dasharray: 628;
-  stroke-dashoffset: 628;
-  animation: drawEnso 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Red Hanko signature stamp effect */
-.hanko-stamp {
-  border: 2px solid #C94A29;
-  color: #C94A29;
-  text-shadow: 0 0 1px rgba(201, 74, 41, 0.3);
-  box-shadow: 0 0 3px rgba(201, 74, 41, 0.2), inset 0 0 3px rgba(201, 74, 41, 0.2);
-  transform: rotate(-3deg);
-  font-family: 'Shippori Mincho', serif;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  background-color: rgba(201, 74, 41, 0.03);
 }
 
 /* Scroll progress bar indicator */
@@ -198,25 +116,27 @@ body {
   right: 20px;
   top: 15%;
   height: 70%;
-  width: 1px;
-  background: rgba(197, 160, 89, 0.12);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
   z-index: 45;
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
+  border-radius: 9999px;
 }
 .scroll-progress-line {
   width: 100%;
-  background: #C5A059;
+  background: linear-gradient(180deg, #D4AF37, #10B981);
   transition: height 0.1s ease-out;
+  border-radius: 9999px;
 }
 .scroll-progress-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #C94A29; /* Traditional Cinnabar Sun */
-  box-shadow: 0 0 8px rgba(201, 74, 41, 0.8);
+  background: #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
   position: absolute;
   left: -3px;
   transition: transform 0.1s ease-out;
